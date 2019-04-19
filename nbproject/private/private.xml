@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/mariana/Documents/UFSCar/Web/DSW/sql/db.sql</file>
+            <file>file:/home/mariana/Documents/UFSCar/Web/DSW/src/java/br/ufscar/dc/dsw/model/Cliente.java</file>
+            <file>file:/home/mariana/Documents/UFSCar/Web/DSW/src/java/br/ufscar/dc/dsw/dao/ClienteDAO.java</file>
+            <file>file:/home/mariana/Documents/UFSCar/Web/DSW/src/java/br/ufscar/dc/dsw/dao/UsuarioDAO.java</file>
+        </group>
     </open-files>
 </project-private>

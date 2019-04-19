@@ -38,29 +38,35 @@ public class UsuarioDAO {
         String sql = "INSERT INTO Usuario (email, senha, nome, ativo) VALUES (?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
-            PreparedStatement statement = conn.prepareStatement(sql);
+            PreparedStatement statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, usuario.getEmail());
             statement.setString(2, usuario.getSenha());
             statement.setString(3, usuario.getNome());
             statement.setString(4, usuario.getAtivo());
             statement.executeUpdate();
+            
+            ResultSet rs = statement.getGeneratedKeys();
+            rs.next();
+            id = rs.getInt(1);
+            
             statement.close();
             conn.close();
+            
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         
-        sql = "SELECT max(id) from Usuario";
-        try {
-            Connection conn = this.getConnection();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
-            id = rs.getInt(1);
-            statement.close();
-            conn.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+//        sql = "SELECT max(id) from Usuario";
+//        try {
+//            Connection conn = this.getConnection();
+//            Statement statement = conn.createStatement();
+//            ResultSet rs = statement.executeQuery(sql);
+//            id = rs.getInt(1);
+//            statement.close();
+//            conn.close();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
         
         return id;
     }

@@ -18,6 +18,7 @@ public class Cliente extends Usuario{
     private String telefone;
 
     public Cliente(int id, String sexo, String cpf, String telefone, String data_nascimento){
+        super(null, null, null, null);
         this.id = id;
         this.data_nascimento = data_nascimento;
         this.sexo = sexo;
