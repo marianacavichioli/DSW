@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.ufscar.dc.dsw.model;
 
-/**
- *
- * @author mariana
- */
 public class Usuario {
     
     private int id;
@@ -19,6 +10,12 @@ public class Usuario {
 
     public Usuario(String senha, String email, String nome, String ativo){
         this.senha = senha;
+        this.email = email;
+        this.nome = nome;
+        this.ativo = ativo;
+    }
+    
+    public Usuario(String email, String nome, String ativo){
         this.email = email;
         this.nome = nome;
         this.ativo = ativo;

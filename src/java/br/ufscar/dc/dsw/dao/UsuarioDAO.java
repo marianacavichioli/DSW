@@ -20,7 +20,6 @@ import java.util.List;
  * @author mariana
  */
 public class UsuarioDAO {
-
     public UsuarioDAO() {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -153,4 +152,3 @@ public class UsuarioDAO {
         return usuario;
     }
 }
-

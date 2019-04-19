@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.ufscar.dc.dsw.dao;
 
 import br.ufscar.dc.dsw.model.Cliente;
-import br.ufscar.dc.dsw.model.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,12 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author mariana
- */
 public class ClienteDAO {
-    
     public ClienteDAO() {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -35,9 +24,10 @@ public class ClienteDAO {
     }
 
     public void insert(Cliente cliente) {
-        String sql = "INSERT INTO Cliente (id, sexo, cpf, telefone, data_nascimento) VALUES (?, ?, ?, ?, ?)";
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         int id = usuarioDAO.insert(cliente);
+        
+        String sql = "INSERT INTO Cliente (id, sexo, cpf, telefone, data_nascimento) VALUES (?, ?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);;
@@ -60,7 +50,7 @@ public class ClienteDAO {
         //Pegar senha e email também??
         
         List<Cliente> listaClientes = new ArrayList<>();
-        String sql = "SELECT * FROM Cliente";
+        String sql = "SELECT * FROM Cliente, Usuario";
         try {
             Connection conn = this.getConnection();
             Statement statement = conn.createStatement();
@@ -71,7 +61,11 @@ public class ClienteDAO {
                 String cpf = resultSet.getString("cpf");
                 String telefone = resultSet.getString("telefone");
                 String data_nascimento = resultSet.getString("data_nascimento");
-                Cliente cliente = new Cliente(id, sexo, cpf, telefone, data_nascimento);
+                String nome = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                String ativo = resultSet.getString("ativo");
+                
+                Cliente cliente = new Cliente(id, data_nascimento, sexo, cpf, telefone, email, nome, ativo);
                 listaClientes.add(cliente);
             }
             resultSet.close();
@@ -88,8 +82,6 @@ public class ClienteDAO {
         // Quando eu deleto de usuário ainda preciso deletar de cliente??
         
         String sql = "DELETE FROM Cliente where id = ?";
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        usuarioDAO.delete(cliente);
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -100,10 +92,31 @@ public class ClienteDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarioDAO.delete(cliente);
     }
 
     public void update(Cliente cliente) {
-        String sql = "UPDATE Cliente SET sexo = ?, cpf = ?, telefone = ?, data_nascimento = ?";
+        // Tentar melhorar 
+        String sql = "UPDATE Usuario SET email = ?, senha = ?, nome = ?, ativo = ?";
+        sql += " WHERE id = ?";
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, cliente.getId());
+            statement.setString(2, cliente.getEmail());
+            statement.setString(3, cliente.getSenha());
+            statement.setString(4, cliente.getNome());
+            statement.setString(5, cliente.getAtivo());
+            statement.executeUpdate();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        
+        sql = "UPDATE Cliente SET sexo = ?, cpf = ?, telefone = ?, data_nascimento = ?";
         sql += " WHERE id = ?";
         try {
             Connection conn = this.getConnection();

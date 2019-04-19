@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.ufscar.dc.dsw.model;
 
-/**
- *
- * @author mariana
- */
 public class Cliente extends Usuario{
     
     private int id;
@@ -18,6 +9,9 @@ public class Cliente extends Usuario{
     private String telefone;
 
     public Cliente(int id, String sexo, String cpf, String telefone, String data_nascimento){
+        
+        // Verificar se é certo passar null
+        
         super(null, null, null, null);
         this.id = id;
         this.data_nascimento = data_nascimento;
@@ -34,6 +28,19 @@ public class Cliente extends Usuario{
         this.cpf = cpf;
         this.telefone = telefone;
     }
+
+    public Cliente(int id) {
+        super(null, null, null, null);
+        this.id = id;
+    }
+
+    public Cliente(int id, String data_nascimento, String sexo, String cpf, String telefone, String email, String nome, String ativo) {
+        super(email, nome, ativo);
+        this.id = id;
+        this.data_nascimento = data_nascimento;
+        this.sexo = sexo;
+        this.cpf = cpf;
+        this.telefone = telefone;    }
        
     public int getId() {
         return id;
