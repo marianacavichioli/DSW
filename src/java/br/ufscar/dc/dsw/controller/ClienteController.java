@@ -31,7 +31,6 @@ public class ClienteController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        System.out.println("doPost");
         doGet(request, response);
     }
 

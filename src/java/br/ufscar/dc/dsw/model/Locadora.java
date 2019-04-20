@@ -6,7 +6,7 @@ public class Locadora extends Usuario {
     private int cnpj;
     private String cidade;
 
-    public Locadora(String senha, String email, String nome, String ativo) {
+    public Locadora(String senha, String email, String nome, int ativo) {
         super(senha, email, nome, ativo);
         this.id = super.getId();
     }
