@@ -55,18 +55,6 @@ public class UsuarioDAO {
             throw new RuntimeException(e);
         }
         
-//        sql = "SELECT max(id) from Usuario";
-//        try {
-//            Connection conn = this.getConnection();
-//            Statement statement = conn.createStatement();
-//            ResultSet rs = statement.executeQuery(sql);
-//            id = rs.getInt(1);
-//            statement.close();
-//            conn.close();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-        
         return id;
     }
 

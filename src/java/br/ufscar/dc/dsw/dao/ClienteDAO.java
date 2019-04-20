@@ -50,7 +50,7 @@ public class ClienteDAO {
         //Pegar senha e email também??
         
         List<Cliente> listaClientes = new ArrayList<>();
-        String sql = "SELECT * FROM Cliente, Usuario";
+        String sql = "SELECT * FROM Cliente c, Usuario u WHERE c.id = u.id";
         try {
             Connection conn = this.getConnection();
             Statement statement = conn.createStatement();
@@ -98,25 +98,8 @@ public class ClienteDAO {
     }
 
     public void update(Cliente cliente) {
-        // Tentar melhorar 
-        String sql = "UPDATE Usuario SET email = ?, senha = ?, nome = ?, ativo = ?";
-        sql += " WHERE id = ?";
-        try {
-            Connection conn = this.getConnection();
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, cliente.getId());
-            statement.setString(2, cliente.getEmail());
-            statement.setString(3, cliente.getSenha());
-            statement.setString(4, cliente.getNome());
-            statement.setString(5, cliente.getAtivo());
-            statement.executeUpdate();
-            statement.close();
-            conn.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        
-        sql = "UPDATE Cliente SET sexo = ?, cpf = ?, telefone = ?, data_nascimento = ?";
+               
+        String sql = "UPDATE Cliente SET sexo = ?, cpf = ?, telefone = ?, data_nascimento = ?";
         sql += " WHERE id = ?";
         try {
             Connection conn = this.getConnection();
@@ -132,11 +115,14 @@ public class ClienteDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarioDAO.update(cliente);
     }
 
     public Cliente get(int id) {
         Cliente cliente = null;
-        String sql = "SELECT * FROM Cliente WHERE id = ?";
+        String sql = "SELECT * FROM Cliente c, Usuario u WHERE c.id = ? and c.id = u.id";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -147,7 +133,12 @@ public class ClienteDAO {
                 String cpf = resultSet.getString("cpf");
                 String telefone = resultSet.getString("telefone");
                 String data_nascimento = resultSet.getString("data_nascimento");
-                cliente = new Cliente(id, sexo, cpf, telefone, data_nascimento);
+                String senha = resultSet.getString("senha");
+                String nome = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                String ativo = resultSet.getString("ativo");
+                
+                cliente = new Cliente(id, data_nascimento, sexo, cpf, telefone, senha, email, nome, ativo);
             }
             resultSet.close();
             statement.close();
