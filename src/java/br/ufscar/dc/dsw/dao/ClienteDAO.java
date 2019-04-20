@@ -63,7 +63,7 @@ public class ClienteDAO {
                 String data_nascimento = resultSet.getString("data_nascimento");
                 String nome = resultSet.getString("nome");
                 String email = resultSet.getString("email");
-                String ativo = resultSet.getString("ativo");
+                int ativo = resultSet.getInt("ativo");
                 
                 Cliente cliente = new Cliente(id, data_nascimento, sexo, cpf, telefone, email, nome, ativo);
                 listaClientes.add(cliente);
@@ -136,7 +136,7 @@ public class ClienteDAO {
                 String senha = resultSet.getString("senha");
                 String nome = resultSet.getString("nome");
                 String email = resultSet.getString("email");
-                String ativo = resultSet.getString("ativo");
+                int ativo = resultSet.getInt("ativo");
                 
                 cliente = new Cliente(id, data_nascimento, sexo, cpf, telefone, senha, email, nome, ativo);
             }

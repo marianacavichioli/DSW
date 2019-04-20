@@ -41,7 +41,7 @@ public class UsuarioDAO {
             statement.setString(1, usuario.getEmail());
             statement.setString(2, usuario.getSenha());
             statement.setString(3, usuario.getNome());
-            statement.setString(4, usuario.getAtivo());
+            statement.setInt(4, usuario.getAtivo());
             statement.executeUpdate();
             
             ResultSet rs = statement.getGeneratedKeys();
@@ -70,7 +70,7 @@ public class UsuarioDAO {
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");
                 String nome = resultSet.getString("nome");
-                String ativo = resultSet.getString("ativo");
+                int ativo = resultSet.getInt("ativo");
                 Usuario usuario = new Usuario(senha, email, nome, ativo);
                 listaUsuarios.add(usuario);
             }
@@ -106,7 +106,7 @@ public class UsuarioDAO {
             statement.setString(1, usuario.getEmail());
             statement.setString(2, usuario.getSenha());
             statement.setString(3, usuario.getNome());
-            statement.setString(4, usuario.getAtivo());
+            statement.setInt(4, usuario.getAtivo());
             statement.setInt(5, usuario.getId());
             statement.executeUpdate();
             statement.close();
@@ -128,7 +128,7 @@ public class UsuarioDAO {
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");
                 String nome = resultSet.getString("nome");
-                String ativo = resultSet.getString("ativo");
+                int ativo = resultSet.getInt("ativo");
                 usuario = new Usuario(senha, email, nome, ativo);
             }
             resultSet.close();

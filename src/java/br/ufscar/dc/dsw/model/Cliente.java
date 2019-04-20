@@ -12,7 +12,7 @@ public class Cliente extends Usuario{
         
         // Verificar se é certo passar null
         
-        super(null, null, null, null);
+        super(null, null, null, -1);
         this.id = id;
         this.data_nascimento = data_nascimento;
         this.sexo = sexo;
@@ -20,7 +20,7 @@ public class Cliente extends Usuario{
         this.telefone = telefone;
     }
     
-    public Cliente(int id, String data_nascimento, String sexo, String cpf, String telefone, String senha, String email, String nome, String ativo) {
+    public Cliente(int id, String data_nascimento, String sexo, String cpf, String telefone, String senha, String email, String nome, int ativo) {
         super(senha, email, nome, ativo);
         this.id = id;
         this.data_nascimento = data_nascimento;
@@ -30,17 +30,18 @@ public class Cliente extends Usuario{
     }
 
     public Cliente(int id) {
-        super(null, null, null, null);
+        super(null, null, null, -1);
         this.id = id;
     }
 
-    public Cliente(int id, String data_nascimento, String sexo, String cpf, String telefone, String email, String nome, String ativo) {
+    public Cliente(int id, String data_nascimento, String sexo, String cpf, String telefone, String email, String nome, int ativo) {
         super(email, nome, ativo);
         this.id = id;
         this.data_nascimento = data_nascimento;
         this.sexo = sexo;
         this.cpf = cpf;
-        this.telefone = telefone;    }
+        this.telefone = telefone;
+    }
        
     public int getId() {
         return id;

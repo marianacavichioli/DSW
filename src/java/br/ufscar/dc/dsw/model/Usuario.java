@@ -6,16 +6,16 @@ public class Usuario {
     private String email;
     private String senha;
     private String nome;
-    private String ativo;
+    private int ativo;
 
-    public Usuario(String senha, String email, String nome, String ativo){
+    public Usuario(String senha, String email, String nome, int ativo){
         this.senha = senha;
         this.email = email;
         this.nome = nome;
         this.ativo = ativo;
     }
     
-    public Usuario(String email, String nome, String ativo){
+    public Usuario(String email, String nome, int ativo){
         this.email = email;
         this.nome = nome;
         this.ativo = ativo;
@@ -53,11 +53,11 @@ public class Usuario {
         this.nome = nome;
     }
     
-    public String getAtivo() {
+    public int getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(String ativo) {
+    public void setAtivo(int ativo) {
         this.ativo = ativo;
     }
 }

@@ -25,7 +25,6 @@ public class ClienteController extends HttpServlet {
 
     @Override
     public void init() {
-        System.out.println("ENTREI");
         daoCliente = new ClienteDAO();
         daoUsuario = new UsuarioDAO();
     }
@@ -42,11 +41,9 @@ public class ClienteController extends HttpServlet {
         try {
             switch (action) {
                 case "/cadastro":
-                    System.out.println("doGet Cadastro");
                     apresentaFormCadastro(request, response);
                     break;
                 case "/insercao":
-                    System.out.println("doGet Insercao");
                     insere(request, response);
                     break;
                 case "/remocao":
@@ -75,7 +72,6 @@ public class ClienteController extends HttpServlet {
     }
 
     private void apresentaFormCadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Entrei cadastro");
         RequestDispatcher dispatcher = request.getRequestDispatcher("cliente/formulario.jsp");
         dispatcher.forward(request, response);
     }
@@ -90,9 +86,7 @@ public class ClienteController extends HttpServlet {
 
     private void insere(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        
-        System.out.println("Entrei insere");
-        
+                
         request.setCharacterEncoding("UTF-8");
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
@@ -101,7 +95,7 @@ public class ClienteController extends HttpServlet {
         String sexo = request.getParameter("sexo");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        String ativo = request.getParameter("ativo"); 
+        int ativo = Integer.parseInt(request.getParameter("ativo"));
                 
         Cliente cliente = new Cliente(-1, data_nascimento, sexo, cpf, telefone, senha, email, nome, ativo);
         daoCliente.insert(cliente);
@@ -119,7 +113,7 @@ public class ClienteController extends HttpServlet {
         String sexo = request.getParameter("sexo");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        String ativo = request.getParameter("ativo"); 
+        int ativo = Integer.parseInt(request.getParameter("ativo"));
         
         Cliente cliente = new Cliente(-1, data_nascimento, sexo, cpf, telefone, senha, email, nome, ativo);
         daoCliente.update(cliente);

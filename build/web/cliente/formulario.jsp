@@ -91,7 +91,7 @@
                     <tr>                        
                         <th>Ativo: </th>                    
                         <td>                            
-                            <input type="text" name="ativo"                                   
+                            <input type="number" name="ativo"                                   
                                    value="<c:out value='${cliente.ativo}' />"                                   
                                    />                        
                         </td>                    
