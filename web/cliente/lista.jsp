@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>    
     <head>        
-        <title>Locação Bicicletas</title>    
+        <title>Locação Bicicletas teste</title>    
     </head>    
     <body>    
     <center>        

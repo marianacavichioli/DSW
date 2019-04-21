@@ -20,6 +20,10 @@ import java.util.List;
  * @author mariana
  */
 public class UsuarioDAO {
+    
+    static Connection currentCon = null; 
+    static ResultSet rs = null; 
+
     public UsuarioDAO() {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -43,18 +47,18 @@ public class UsuarioDAO {
             statement.setString(3, usuario.getNome());
             statement.setInt(4, usuario.getAtivo());
             statement.executeUpdate();
-            
+
             ResultSet rs = statement.getGeneratedKeys();
             rs.next();
             id = rs.getInt(1);
-            
+
             statement.close();
             conn.close();
-            
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        
+
         return id;
     }
 
@@ -139,4 +143,58 @@ public class UsuarioDAO {
         }
         return usuario;
     }
+
+    public static Usuario login(Usuario usuario) { //preparing some objects for connection 
+        Statement stmt = null;
+        String email = usuario.getEmail();
+        String senha = usuario.getSenha();
+        String searchQuery = "select * from usuario where email='" + email + "' AND senha='" + senha + "'";
+        
+        System.out.println("Your user name is " + email);
+        System.out.println("Your password is " + senha);
+        System.out.println("Query: " + searchQuery);
+        try { //connect to DB 
+            currentCon = ConnectionManager.getConnection();
+            stmt = currentCon.createStatement();
+            rs = stmt.executeQuery(searchQuery);
+            boolean more = rs.next(); // if user does not exist set the isValid variable to false 
+            if (!more) {
+                System.out.println("Sorry, you are not a registered user! Please sign up first");
+                usuario.setAtivo(0);
+            } //if user exists set the isValid variable to true 
+            else if (more) {
+                String nome = rs.getString("nome");
+                System.out.println("Welcome " + nome);
+                usuario.setNome(nome);
+                usuario.setAtivo(1);
+            }
+        } catch (Exception ex) {
+            System.out.println("Log In failed: An Exception has occurred! " + ex);
+        } //some exception handling 
+        finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                }
+                rs = null;
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (Exception e) {
+                }
+                stmt = null;
+            }
+            if (currentCon != null) {
+                try {
+                    currentCon.close();
+                } catch (Exception e) {
+                }
+                currentCon = null;
+            }
+        }
+        return usuario;
+    }
 }
+

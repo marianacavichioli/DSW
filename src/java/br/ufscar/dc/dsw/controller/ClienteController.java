@@ -39,6 +39,8 @@ public class ClienteController extends HttpServlet {
         String action = request.getServletPath();
         try {
             switch (action) {
+                case "/login":
+                    apresentaLogin(request, response);
                 case "/cadastro":
                     apresentaFormCadastro(request, response);
                     break;
@@ -124,6 +126,11 @@ public class ClienteController extends HttpServlet {
         Cliente cliente = new Cliente(id);
         daoCliente.delete(cliente);
         response.sendRedirect("lista");
+    }
+    
+    private void apresentaLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("login/login.jsp");
+        dispatcher.forward(request, response);
     }
     
 }

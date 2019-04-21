@@ -14,7 +14,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Alguel de Bicicletas</title>
+    <title>Aluguel de Bicicletas</title>
 
 <div class= "header">
     <center>
@@ -30,6 +30,7 @@
                 <li><a href="#" class="button">Cadastrar Locacao</a></li>
                 <li><a href="locadora/cadastro" class="button">Cadastrar Locadora</a></li>
                 <li><a href="cadastro" class="button">Cadastrar Cliente</a></li>
+                <li><a href="login" class="button">Login</a></li>
             </ul>
         </div>
     
