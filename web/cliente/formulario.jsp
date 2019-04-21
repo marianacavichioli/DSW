@@ -9,7 +9,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alguel de Bicicletas</title>
+        <title>Aluguel de Bicicletas</title>
 
     <div class= "header">
         <center>
@@ -21,10 +21,10 @@
   
         <div class ='botoes'>
             <ul>
-                <li><a href="#" class="button"> Pagina Inicial</a></li>
+                <li><a href="../index.jsp" class="button"> Pagina Inicial</a></li>
                 <li><a href="#" class="button">Cadastrar Locacao</a></li>
                 <li><a href="#" class="button">Cadastrar Locadora</a></li>
-                <li><a href="cliente/formulario.jsp" class="button">Cadastrar Cliente</a></li>
+                <li><a href="formulario.jsp" class="button">Cadastrar Cliente</a></li>
             </ul>
         </div>
     

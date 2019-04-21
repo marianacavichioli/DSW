@@ -6,14 +6,6 @@
         <title>Locação Bicicletas</title>    
     </head>    
     <body>    
-    <center>        
-        <h1>Locação Bicicletas Online</h1>        
-        <h2>            
-            <a href="cadastro">Adicione Novo Cliente</a>            
-            &nbsp;&nbsp;&nbsp;            
-            <a href="lista">Lista de Clientes</a>        
-        </h2>    
-    </center>  
     <div align="center">        
         <table border="1" cellpadding="5">            
             <caption><h2>Lista de Clientes</h2></caption>            

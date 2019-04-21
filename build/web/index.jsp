@@ -26,7 +26,7 @@
 <body>
         <div class ='botoes'>
             <ul>
-                <li><a href="#" class="button"> Pagina Inicial</a></li>
+                <li><a href="" class="button"> Pagina Inicial</a></li>
                 <li><a href="#" class="button">Cadastrar Locacao</a></li>
                 <li><a href="#" class="button">Cadastrar Locadora</a></li>
                 <li><a href="cliente/formulario.jsp" class="button">Cadastrar Cliente</a></li>
