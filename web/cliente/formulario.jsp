@@ -21,10 +21,10 @@
   
         <div class ='botoes'>
             <ul>
-                <li><a href="../index.jsp" class="button"> Pagina Inicial</a></li>
+                <li><a href="index.jsp" class="button"> Pagina Inicial</a></li>
                 <li><a href="#" class="button">Cadastrar Locacao</a></li>
                 <li><a href="#" class="button">Cadastrar Locadora</a></li>
-                <li><a href="formulario.jsp" class="button">Cadastrar Cliente</a></li>
+                <li><a href="cadastro" class="button">Cadastrar Cliente</a></li>
             </ul>
         </div>
     
