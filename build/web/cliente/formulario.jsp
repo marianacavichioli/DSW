@@ -101,14 +101,14 @@
                                />                        
                     </td>                    
                 </tr> 
-                <tr>                        
+<!--                <tr>                        
                     <th>Ativo: </th>                    
                     <td>                            
                         <input type="number" name="ativo"                                   
                                value="<c:out value='${cliente.ativo}' />"                                   
                                />                        
                     </td>                    
-                </tr> 
+                </tr> -->
                 <tr>                        
                     <td colspan="2" align="center">                            
                         <input type="submit" value="Salvar" />                        

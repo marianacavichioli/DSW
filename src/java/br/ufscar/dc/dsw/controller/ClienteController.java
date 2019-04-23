@@ -17,7 +17,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 @WebServlet(urlPatterns = "/cliente_crud/*")
+=======
+@WebServlet(urlPatterns = "/cliente/*")
+>>>>>>> login
 public class ClienteController extends HttpServlet {
     
     private ClienteDAO daoCliente;
@@ -40,8 +44,6 @@ public class ClienteController extends HttpServlet {
         action = action.split("/")[action.split("/").length - 1];
         try {
             switch (action) {
-                case "login":
-                    apresentaLogin(request, response);
                 case "cadastro":
                     apresentaFormCadastro(request, response);
                     break;
@@ -58,7 +60,7 @@ public class ClienteController extends HttpServlet {
                     atualize(request, response);
                     break;
                 default:
-                    lista(request, response);
+                    //slista(request, response);
                     break;
             }
         } catch (RuntimeException | IOException | ServletException e) {
@@ -127,11 +129,6 @@ public class ClienteController extends HttpServlet {
         Cliente cliente = new Cliente(id);
         daoCliente.delete(cliente);
         response.sendRedirect("lista");
-    }
-    
-    private void apresentaLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("login/login.jsp");
-        dispatcher.forward(request, response);
     }
     
 }

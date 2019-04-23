@@ -45,8 +45,6 @@ public class LocadoraController extends HttpServlet{
         action = action.split("/")[action.split("/").length - 1];
         try {
             switch (action) {
-                case "login":
-                    apresentaLogin(request, response);
                 case "cadastro":
                     apresentaFormCadastro(request, response);
                     break;
@@ -128,10 +126,5 @@ public class LocadoraController extends HttpServlet{
         Locadora locadora = new Locadora(id);
         daoLocadora.delete(locadora);
         response.sendRedirect("lista");
-    }
-    
-    private void apresentaLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("login/login.jsp");
-        dispatcher.forward(request, response);
     }
 }
