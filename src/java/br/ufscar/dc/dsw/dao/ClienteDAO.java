@@ -27,17 +27,18 @@ public class ClienteDAO {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         int id = usuarioDAO.insert(cliente);
         
-        String sql = "INSERT INTO Cliente (id, nome, sexo, cpf, telefone, data_nascimento) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Cliente (id, nome, cpf, telefone, data_nascimento, sexo) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);;
             statement = conn.prepareStatement(sql);
             statement.setInt(1, id);
             statement.setString(2, cliente.getNome());
-            statement.setString(3, cliente.getSexo());
-            statement.setString(4, cliente.getCpf());
-            statement.setString(5, cliente.getTelefone());
-            statement.setString(6, cliente.getData_nascimento());
+            statement.setString(3, cliente.getCpf());
+            statement.setString(4, cliente.getTelefone());
+            statement.setString(5, cliente.getData_nascimento());
+            statement.setString(6, cliente.getSexo());
+
             statement.executeUpdate();
             statement.close();
             conn.close();
@@ -100,17 +101,17 @@ public class ClienteDAO {
 
     public void update(Cliente cliente) {
                
-        String sql = "UPDATE Cliente SET nome = ?, sexo = ?, cpf = ?, telefone = ?, data_nascimento = ?";
+        String sql = "UPDATE Cliente SET nome = ?, cpf = ?, telefone = ?, data_nascimento = ?, sexo = ?";
         sql += " WHERE id = ?";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, cliente.getId());
-            statement.setString(2, cliente.getSexo());
+            statement.setString(2, cliente.getNome());
             statement.setString(3, cliente.getCpf());
             statement.setString(4, cliente.getTelefone());
             statement.setString(5, cliente.getData_nascimento());
-            statement.setString(6, cliente.getNome());
+            statement.setString(6, cliente.getSexo());
             statement.executeUpdate();
             statement.close();
             conn.close();
@@ -140,7 +141,7 @@ public class ClienteDAO {
                 String email = resultSet.getString("email");
                 int ativo = resultSet.getInt("ativo");
                 
-                cliente = new Cliente(id, nome, data_nascimento, sexo, cpf, telefone, senha, email, ativo);
+                cliente = new Cliente(id, nome, cpf, telefone,data_nascimento, sexo, senha, email, ativo);
             }
             resultSet.close();
             statement.close();

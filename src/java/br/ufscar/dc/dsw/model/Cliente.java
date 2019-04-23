@@ -9,7 +9,7 @@ public class Cliente extends Usuario{
     private String cpf;
     private String telefone;
 
-    public Cliente(int id, String nome, String sexo, String cpf, String telefone, String data_nascimento){
+    public Cliente(int id, String nome, String cpf, String telefone, String data_nascimento, String sexo){
         super(null, null, -1);
         this.id = id;
         this.data_nascimento = data_nascimento;
@@ -18,7 +18,7 @@ public class Cliente extends Usuario{
         this.telefone = telefone;
     }
     
-    public Cliente(int id, String nome, String sexo, String cpf, String telefone, String data_nascimento, String senha, String email, int ativo) {
+    public Cliente(int id, String nome, String cpf, String telefone, String data_nascimento, String sexo, String senha, String email, int ativo) {
         super(senha, email, ativo);
         this.id = id;
         this.nome = nome;
@@ -33,7 +33,7 @@ public class Cliente extends Usuario{
         this.id = id;
     }
 
-    public Cliente(int id, String nome, String data_nascimento, String sexo, String cpf, String telefone, String email, int ativo) {
+    public Cliente(int id, String nome, String cpf, String telefone, String data_nascimento, String sexo, String email, int ativo) {
         super(email, ativo);
         this.id = id;
         this.nome = nome;

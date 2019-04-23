@@ -17,10 +17,10 @@ constraint Papel_PK PRIMARY KEY (id)
 create table Cliente (
 id integer,
 nome varchar(100) not null,
-sexo varchar(50),
-cpf varchar(11) not null,
+cpf varchar(14) not null,
 telefone varchar(11),
 data_nascimento date,
+sexo varchar(50),
 constraint Cliente_PK PRIMARY KEY (id),
 constraint Cliente_FK FOREIGN KEY (id) REFERENCES Usuario(id)
 );
