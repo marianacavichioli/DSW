@@ -22,7 +22,6 @@
         <div class ='botoes'>
             <ul>
                 <li><a href="../index.jsp" class="button"> Pagina Inicial</a></li>
-                <li><a href="locacao_crud/cadastro" class="button">Cadastrar Locacao</a></li>
                 <li><a href="" class="button">Cadastrar Locadora</a></li>
                 <li><a href="cliente_crud/cadastro" class="button">Cadastrar Cliente</a></li>
                 <li><a href="cliente_crud/lista" class="button">Lista de Clientes</a></li>

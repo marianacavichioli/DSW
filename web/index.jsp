@@ -32,25 +32,18 @@
                 <sec:authorize access="hasRole('USER')">
                     <li><a href="locacao_crud/cadastro" class="button">Cadastrar Locacao</a></li>
                 </sec:authorize>
-               
-                <sec:authorize access="hasRole('ADMIN')">
-                    <div class="dropdown">
-                        <button class="dropbtn">Locadoras</button>
-                        <div class="dropdown-content">
-                            <li><a href="locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>
-                            <li><a href="locadora_crud/lista" class="button">Lista de Locadoras</a></li>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Clientes</button>
-                        <div class="dropdown-content">
-                            <li><a href="cliente_crud/cadastro" class="button">Cadastrar Cliente</a></li>
-                            <li><a href="cliente_crud/lista" class="button">Lista de Clientes</a></li>
-                        </div>
-                    </div>
-                </sec:authorize>
                 
                 <li><a href="logout" class="button">Logout</a></li>
+                
+                <sec:authorize access="hasRole('ADMIN')">
+                            <li><a href="locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>
+                            <li><a href="locadora_crud/lista" class="button">Lista de Locadoras</a></li>
+                    
+                    
+                            <li><a href="cliente_crud/cadastro" class="button">Cadastrar Cliente</a></li>
+                            <li><a href="cliente_crud/lista" class="button">Lista de Clientes</a></li>
+                    </div>
+                </sec:authorize>
 
             </ul>
         </div>
