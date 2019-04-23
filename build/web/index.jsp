@@ -26,14 +26,15 @@
 <body>
         <div class ='botoes'>
             <ul>
-                <li><a href="" class="button"> Pagina Inicial</a></li>
+                <li><a href="#" class="button"> Pagina Inicial</a></li>
                 <li><a href="#" class="button">Cadastrar Locacao</a></li>
                 <li><a href="locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>
                 <li><a href="cliente_crud/cadastro" class="button">Cadastrar Cliente</a></li>
+                <li><a href="cliente_crud/lista" class="button">Lista de Clientes</a></li>
                 <li><a href="login" class="button">Login</a></li>
             </ul>
         </div>
-    
+       
         <div class ='conteudo'>
         <p> Escolha sua cidade: </p>
         
