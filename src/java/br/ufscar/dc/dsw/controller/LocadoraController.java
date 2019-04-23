@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author mariana
  */
 
-@WebServlet(urlPatterns = "/locadora")
+@WebServlet(urlPatterns = "/locadora_crud/*")
 public class LocadoraController extends HttpServlet{
     
     private LocadoraDAO daoLocadora;
@@ -30,7 +30,6 @@ public class LocadoraController extends HttpServlet{
 
     @Override
     public void init() {
-        System.out.println("ENTREIII");
         daoLocadora = new LocadoraDAO();
         daoUsuario = new UsuarioDAO();
     }
@@ -42,24 +41,25 @@ public class LocadoraController extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        String action = request.getServletPath();
+        String action = request.getRequestURI();
+        action = action.split("/")[action.split("/").length - 1];
         try {
             switch (action) {
-                case "/login":
+                case "login":
                     apresentaLogin(request, response);
-                case "/cadastro":
+                case "cadastro":
                     apresentaFormCadastro(request, response);
                     break;
-                case "/insercao":
+                case "insercao":
                     insere(request, response);
                     break;
-                case "/remocao":
+                case "remocao":
                     remove(request, response);
                     break;
-                case "/edicao":
+                case "edicao":
                     apresentaFormEdicao(request, response);
                     break;
-                case "/atualizacao":
+                case "atualizacao":
                     atualize(request, response);
                     break;
                 default:
@@ -74,19 +74,19 @@ public class LocadoraController extends HttpServlet{
     private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Locadora> listaLocadoras = daoLocadora.getAll();
         request.setAttribute("listaLocadoras", listaLocadoras);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("locadora/lista.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/locadora/lista.jsp");
         dispatcher.forward(request, response);
     }
 
     private void apresentaFormCadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("locadora/formulario.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/locadora/formulario.jsp");
         dispatcher.forward(request, response);
     }
 
     private void apresentaFormEdicao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Locadora locadora = daoLocadora.get(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("locadora/formulario.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/locadora/formulario.jsp");
         request.setAttribute("locadora", locadora);
         dispatcher.forward(request, response);
     }

@@ -28,8 +28,8 @@
             <ul>
                 <li><a href="" class="button"> Pagina Inicial</a></li>
                 <li><a href="#" class="button">Cadastrar Locacao</a></li>
-                <li><a href="locadora/cadastro" class="button">Cadastrar Locadora</a></li>
-                <li><a href="cadastro" class="button">Cadastrar Cliente</a></li>
+                <li><a href="locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>
+                <li><a href="cliente_crud/cadastro" class="button">Cadastrar Cliente</a></li>
                 <li><a href="login" class="button">Login</a></li>
             </ul>
         </div>

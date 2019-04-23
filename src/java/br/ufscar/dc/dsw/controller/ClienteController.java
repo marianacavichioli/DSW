@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/")
+@WebServlet(urlPatterns = "/cliente_crud/*")
 public class ClienteController extends HttpServlet {
     
     private ClienteDAO daoCliente;
@@ -36,24 +36,25 @@ public class ClienteController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        String action = request.getServletPath();
+        String action = request.getRequestURI();
+        action = action.split("/")[action.split("/").length - 1];
         try {
             switch (action) {
-                case "/login":
+                case "login":
                     apresentaLogin(request, response);
-                case "/cadastro":
+                case "cadastro":
                     apresentaFormCadastro(request, response);
                     break;
-                case "/insercao":
+                case "insercao":
                     insere(request, response);
                     break;
-                case "/remocao":
+                case "remocao":
                     remove(request, response);
                     break;
-                case "/edicao":
+                case "edicao":
                     apresentaFormEdicao(request, response);
                     break;
-                case "/atualizacao":
+                case "atualizacao":
                     atualize(request, response);
                     break;
                 default:
@@ -68,19 +69,19 @@ public class ClienteController extends HttpServlet {
     private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Cliente> listaClientes = daoCliente.getAll();
         request.setAttribute("listaClientes", listaClientes);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cliente/lista.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/cliente/lista.jsp");
         dispatcher.forward(request, response);
     }
 
     private void apresentaFormCadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cliente/formulario.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/cliente/formulario.jsp");
         dispatcher.forward(request, response);
     }
 
     private void apresentaFormEdicao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Cliente cliente = daoCliente.get(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cliente/formulario.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/cliente/formulario.jsp");
         request.setAttribute("cliente", cliente);
         dispatcher.forward(request, response);
     }
