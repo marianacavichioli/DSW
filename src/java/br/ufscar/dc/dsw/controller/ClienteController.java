@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/")
+@WebServlet(urlPatterns = "/cliente/*")
 public class ClienteController extends HttpServlet {
     
     private ClienteDAO daoCliente;
@@ -37,10 +37,11 @@ public class ClienteController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         String action = request.getServletPath();
+        log(action);
+        action = action.split("/")[action.split("/").length - 1];
+        
         try {
             switch (action) {
-                case "/login":
-                    apresentaLogin(request, response);
                 case "/cadastro":
                     apresentaFormCadastro(request, response);
                     break;
@@ -57,7 +58,7 @@ public class ClienteController extends HttpServlet {
                     atualize(request, response);
                     break;
                 default:
-                    lista(request, response);
+                    //slista(request, response);
                     break;
             }
         } catch (RuntimeException | IOException | ServletException e) {
@@ -67,9 +68,9 @@ public class ClienteController extends HttpServlet {
 
     private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Cliente> listaClientes = daoCliente.getAll();
-        request.setAttribute("listaClientes", listaClientes);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cliente/lista.jsp");
-        dispatcher.forward(request, response);
+        //request.setAttribute("listaClientes", listaClientes);
+        //RequestDispatcher dispatcher = request.getRequestDispatcher("/cliente/lista.jsp");
+        //dispatcher.forward(request, response);
     }
 
     private void apresentaFormCadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -126,11 +127,6 @@ public class ClienteController extends HttpServlet {
         Cliente cliente = new Cliente(id);
         daoCliente.delete(cliente);
         response.sendRedirect("lista");
-    }
-    
-    private void apresentaLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("login/login.jsp");
-        dispatcher.forward(request, response);
     }
     
 }
