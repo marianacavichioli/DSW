@@ -1,0 +1,78 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 20, 2019, 4:17:39 PM
+    Author     : julia
+*/
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+}
+
+.button {
+  background-color: #424141;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: white;
+  color: #424141;
+}
+* {
+    box-sizing: border-box;
+}
+
+.botoes {
+    float: left;
+    width: 20%;
+    height: 500px; 
+    background: #ccc;
+    padding: 20px;
+}
+
+.botoes ul {
+    list-style: none;
+    margin: 0;
+    padding:0;
+}
+
+.botoes li {
+    border-bottom: 1px solid black;
+}
+
+.botoes li a:link, #navigation li a:visited {
+    margin-top: 15px;
+    display: block;
+    padding: 5px 5px 5px 0.5em;
+    border-left: 12px solid black;
+    border-right: 1px solid black;
+    text-decoration: none;
+}
+
+.conteudo {
+  float: right;
+  padding: 20px;
+  width: 80%;
+  background-color: #f1f1f1;
+  height: 500px; 
+}
