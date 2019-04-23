@@ -29,14 +29,15 @@ public class LocadoraDAO {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         int id = usuarioDAO.insert(locadora);
         
-        String sql = "INSERT INTO Locadora (id, cnpj, cidade) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Locadora (id, nome, cnpj, cidade) VALUES (?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);;
             statement = conn.prepareStatement(sql);
             statement.setInt(1, id);
-            statement.setString(2, locadora.getCnpj());
-            statement.setString(3, locadora.getCidade());
+            statement.setString(2, locadora.getNome());
+            statement.setString(3, locadora.getCnpj());
+            statement.setString(4, locadora.getCidade());
             statement.executeUpdate();
             statement.close();
             conn.close();
@@ -63,7 +64,7 @@ public class LocadoraDAO {
                 String email = resultSet.getString("email");
                 int ativo = resultSet.getInt("ativo");
                 
-                Locadora locadora = new Locadora(id, cnpj, cidade, email, nome, ativo);
+                Locadora locadora = new Locadora(id, nome, cnpj, cidade, email, ativo);
                 listaLocadoras.add(locadora);
             }
             resultSet.close();
@@ -97,14 +98,15 @@ public class LocadoraDAO {
 
     public void update(Locadora locadora) {
                
-        String sql = "UPDATE Locadora SET cnpj = ?, cidade = ?";
+        String sql = "UPDATE Locadora SET nome = ?, cnpj = ?, cidade = ?";
         sql += " WHERE id = ?";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, locadora.getId());
-            statement.setString(2, locadora.getCnpj());
-            statement.setString(3, locadora.getCidade());
+            statement.setString(2, locadora.getNome());
+            statement.setString(3, locadora.getCnpj());
+            statement.setString(4, locadora.getCidade());
             statement.executeUpdate();
             statement.close();
             conn.close();
@@ -132,7 +134,7 @@ public class LocadoraDAO {
                 String email = resultSet.getString("email");
                 int ativo = resultSet.getInt("ativo");
                 
-                locadora = new Locadora(id, cnpj, cidade, senha, email, nome, ativo);
+                locadora = new Locadora(id, nome, cnpj, cidade, senha, email, ativo);
             }
             resultSet.close();
             statement.close();

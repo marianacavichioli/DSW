@@ -17,18 +17,16 @@
                 <th>Nome</th>                
                 <th>CNPJ</th>                
                 <th>Telefone</th>                
-                <th>Cidade</th>              
+                <th>Cidade</th>
+                <th>E-mail</th>
             </tr>            
-            <c:forEach var="cliente" items="${listaClientes}">                
+            <c:forEach var="locadora" items="${listaLocadoras}">                
                 <tr>                    
                     <td><c:out value="${locadora.id}" /></td>                    
                     <td><c:out value="${locadora.nome}" /></td>                    
                     <td><c:out value="${locadora.cnpj}" /></td>                    
-                    <td><c:out value="${locadora.telefone}" /></td>                    
                     <td><c:out value="${locadora.cidade}" /></td>
-                    <td><c:out value="${cliente.sexo}" /></td>
-                    <td><c:out value="${cliente.email}" /></td>
-                    <td><c:out value="${cliente.ativo}" /></td>                    
+                    <td><c:out value="${locadora.email}" /></td>
                     <td><a href="edicao?id=<c:out value='${locadora.id}' />">Edição</a>                        
                         &nbsp;&nbsp;&nbsp;&nbsp;                        
                         <a href="remocao?id=<c:out value='${locadora.id}' />

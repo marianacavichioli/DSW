@@ -40,11 +40,29 @@
         <p> Escolha sua cidade: </p>
         
         <h3> Lista de Locadoras <h3>
-        <table style="width:40%">            
+        <table style="width:70%">            
             <tr>
-                <th>Nome</th>
-                <th>E-mail</th>    
+                <th>Nome</th>                
+                <th>CNPJ</th>                
+                <th>Telefone</th>                
+                <th>Cidade</th>
+                <th>E-mail</th>   
             </tr>
+            <c:forEach var="locadora" items="${listaLocadoras}">                
+                <tr>                    
+                    <td><c:out value="${locadora.id}" /></td>                    
+                    <td><c:out value="${locadora.nome}" /></td>                    
+                    <td><c:out value="${locadora.cnpj}" /></td>                    
+                    <td><c:out value="${locadora.cidade}" /></td>
+                    <td><c:out value="${locadora.email}" /></td>
+                    <td><a href="edicao?id=<c:out value='${locadora.id}' />">Edição</a>                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;                        
+                        <a href="remocao?id=<c:out value='${locadora.id}' />
+                           "onclick="return confirm('Tem certeza de que deseja excluir este item?');">
+                            Remoção
+                        </a></td>                
+                </tr>            
+            </c:forEach> 
         </table>
         </div>
 </body>

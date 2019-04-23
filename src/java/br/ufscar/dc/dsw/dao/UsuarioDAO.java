@@ -38,14 +38,13 @@ public class UsuarioDAO {
 
     public int insert(Usuario usuario) {
         int id;
-        String sql = "INSERT INTO Usuario (email, senha, nome, ativo) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Usuario (email, senha, ativo) VALUES (?, ?, ?)";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, usuario.getEmail());
             statement.setString(2, usuario.getSenha());
-            statement.setString(3, usuario.getNome());
-            statement.setInt(4, usuario.getAtivo());
+            statement.setInt(3, usuario.getAtivo());
             statement.executeUpdate();
 
             ResultSet rs = statement.getGeneratedKeys();
@@ -73,9 +72,8 @@ public class UsuarioDAO {
                 int id = resultSet.getInt("id");
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");
-                String nome = resultSet.getString("nome");
                 int ativo = resultSet.getInt("ativo");
-                Usuario usuario = new Usuario(senha, email, nome, ativo);
+                Usuario usuario = new Usuario(senha, email, ativo);
                 listaUsuarios.add(usuario);
             }
             resultSet.close();
@@ -102,16 +100,15 @@ public class UsuarioDAO {
     }
 
     public void update(Usuario usuario) {
-        String sql = "UPDATE Usuario SET email = ?, senha = ?, nome = ?, ativo = ?";
+        String sql = "UPDATE Usuario SET email = ?, senha = ?, ativo = ?";
         sql += " WHERE id = ?";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, usuario.getEmail());
             statement.setString(2, usuario.getSenha());
-            statement.setString(3, usuario.getNome());
-            statement.setInt(4, usuario.getAtivo());
-            statement.setInt(5, usuario.getId());
+            statement.setInt(3, usuario.getAtivo());
+            statement.setInt(4, usuario.getId());
             statement.executeUpdate();
             statement.close();
             conn.close();
@@ -131,9 +128,8 @@ public class UsuarioDAO {
             if (resultSet.next()) {
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");
-                String nome = resultSet.getString("nome");
                 int ativo = resultSet.getInt("ativo");
-                usuario = new Usuario(senha, email, nome, ativo);
+                usuario = new Usuario(senha, email, ativo);
             }
             resultSet.close();
             statement.close();

@@ -56,7 +56,7 @@ public class ClienteController extends HttpServlet {
                     atualize(request, response);
                     break;
                 default:
-                    //slista(request, response);
+                    lista(request, response);
                     break;
             }
         } catch (RuntimeException | IOException | ServletException e) {
@@ -95,9 +95,9 @@ public class ClienteController extends HttpServlet {
         String sexo = request.getParameter("sexo");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        int ativo = Integer.parseInt(request.getParameter("ativo"));
+        int ativo = 1;
                 
-        Cliente cliente = new Cliente(-1, data_nascimento, sexo, cpf, telefone, senha, email, nome, ativo);
+        Cliente cliente = new Cliente(-1, nome, sexo, cpf, telefone, data_nascimento, senha, email, ativo);
         daoCliente.insert(cliente);
         
         response.sendRedirect("lista");

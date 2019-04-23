@@ -3,16 +3,14 @@ package br.ufscar.dc.dsw.model;
 public class Cliente extends Usuario{
     
     private int id;
+    private String nome;
     private String data_nascimento;
     private String sexo;
     private String cpf;
     private String telefone;
 
-    public Cliente(int id, String sexo, String cpf, String telefone, String data_nascimento){
-        
-        // Verificar se é certo passar null
-        
-        super(null, null, null, -1);
+    public Cliente(int id, String nome, String sexo, String cpf, String telefone, String data_nascimento){
+        super(null, null, -1);
         this.id = id;
         this.data_nascimento = data_nascimento;
         this.sexo = sexo;
@@ -20,9 +18,10 @@ public class Cliente extends Usuario{
         this.telefone = telefone;
     }
     
-    public Cliente(int id, String data_nascimento, String sexo, String cpf, String telefone, String senha, String email, String nome, int ativo) {
-        super(senha, email, nome, ativo);
+    public Cliente(int id, String nome, String sexo, String cpf, String telefone, String data_nascimento, String senha, String email, int ativo) {
+        super(senha, email, ativo);
         this.id = id;
+        this.nome = nome;
         this.data_nascimento = data_nascimento;
         this.sexo = sexo;
         this.cpf = cpf;
@@ -30,13 +29,14 @@ public class Cliente extends Usuario{
     }
 
     public Cliente(int id) {
-        super(null, null, null, -1);
+        super(null, null, -1);
         this.id = id;
     }
 
-    public Cliente(int id, String data_nascimento, String sexo, String cpf, String telefone, String email, String nome, int ativo) {
-        super(email, nome, ativo);
+    public Cliente(int id, String nome, String data_nascimento, String sexo, String cpf, String telefone, String email, int ativo) {
+        super(email, ativo);
         this.id = id;
+        this.nome = nome;
         this.data_nascimento = data_nascimento;
         this.sexo = sexo;
         this.cpf = cpf;
@@ -81,5 +81,14 @@ public class Cliente extends Usuario{
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }    
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
 }

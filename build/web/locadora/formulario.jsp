@@ -63,19 +63,28 @@
                         <input type="text" name="cnpj" size="15"                                   
                                required value="<c:out value='${locadora.cnpj}'/>"/>                        
                     </td>                    
-                </tr>                    
-                <tr>                        
-                    <th>Telefone: </th>                        
-                    <td>                            
-                        <input type="text" name="telefone" size="11"                                   
-                               value="<c:out value='${locadora.telefone}'/>"/>                        
-                    </td>                    
-                </tr>                    
+                </tr>                                     
                 <tr>                        
                     <th>Cidade: </th>                    
                     <td>                            
                         <input type="text" name="cidade" size="70"                                 
                                value="<c:out value='${locadora.cidade}' />"                                   
+                               />                        
+                    </td>                    
+                </tr>
+                <tr>                        
+                    <th>Email: </th>                    
+                    <td>                            
+                        <input type="email" name="email"                                   
+                               value="<c:out value='${locadora.email}' />"                                   
+                               />                        
+                    </td>                    
+                </tr>
+                <tr>                        
+                    <th>Senha: </th>                    
+                    <td>                            
+                        <input type="password" name="senha"                                   
+                               value="<c:out value='${locadora.senha}' />"                                   
                                />                        
                     </td>                    
                 </tr>

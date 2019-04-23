@@ -3,7 +3,6 @@ create table Usuario
 id integer not null generated always as identity (start with 1, increment by 1),
 email varchar(50) not null,
 senha varchar(100) not null,
-nome varchar(100) not null,
 ativo smallint not null,
 CONSTRAINT Usuario_PK PRIMARY KEY (id)
 );
@@ -17,6 +16,7 @@ constraint Papel_PK PRIMARY KEY (id)
 
 create table Cliente (
 id integer,
+nome varchar(100) not null,
 sexo varchar(50),
 cpf varchar(11) not null,
 telefone varchar(11),
@@ -26,7 +26,8 @@ constraint Cliente_FK FOREIGN KEY (id) REFERENCES Usuario(id)
 );
 
 create table Locadora (
-id integer not null generated always as identity (start with 1, increment by 1),
+id integer,
+nome varchar(100) not null,
 cnpj varchar(11) not null,
 cidade varchar(50),
 constraint Locadora_PK PRIMARY KEY (id),
@@ -34,7 +35,7 @@ constraint Locadora_FK FOREIGN KEY (id) REFERENCES Usuario(id)
 );
 
 create table Administrador (
-id integer not null generated always as identity (start with 1, increment by 1),
+id integer,
 constraint Admin_PK PRIMARY KEY (id),
 constraint Admin_FK FOREIGN KEY (id) REFERENCES Usuario(id)
 );

@@ -4,8 +4,8 @@ public class Administrador extends Usuario {
     
     private int id;
     
-    public Administrador(String senha, String email, String nome, int ativo) {
-        super(senha, email, nome, ativo);
+    public Administrador(String senha, String email, int ativo) {
+        super(senha, email, ativo);
         this.id = super.getId();
     }
     

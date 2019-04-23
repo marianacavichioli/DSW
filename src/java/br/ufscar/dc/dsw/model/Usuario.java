@@ -5,19 +5,16 @@ public class Usuario {
     private int id;
     private String email;
     private String senha;
-    private String nome;
     private int ativo;
 
-    public Usuario(String senha, String email, String nome, int ativo){
+    public Usuario(String senha, String email, int ativo){
         this.senha = senha;
         this.email = email;
-        this.nome = nome;
         this.ativo = ativo;
     }
     
-    public Usuario(String email, String nome, int ativo){
+    public Usuario(String email, int ativo){
         this.email = email;
-        this.nome = nome;
         this.ativo = ativo;
     }
     
@@ -43,14 +40,6 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
     
     public int getAtivo() {
