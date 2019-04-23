@@ -17,11 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
 @WebServlet(urlPatterns = "/cliente_crud/*")
-=======
-@WebServlet(urlPatterns = "/cliente/*")
->>>>>>> login
 public class ClienteController extends HttpServlet {
     
     private ClienteDAO daoCliente;

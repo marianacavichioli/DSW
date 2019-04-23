@@ -7,7 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class CriaUsuarios {
 
-    public static void main(String[] args) throws ClassNotFoundException {
+     public static void main(String[] args) throws ClassNotFoundException {
 
         try {
 
@@ -52,5 +52,4 @@ public class CriaUsuarios {
         }
 
     }
-
 }

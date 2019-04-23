@@ -5,7 +5,6 @@
  */
 package br.ufscar.dc.dsw.dao;
 
-import br.ufscar.dc.dsw.login.ConnectionManager;
 import br.ufscar.dc.dsw.model.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
