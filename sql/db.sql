@@ -42,13 +42,13 @@ constraint Admin_FK FOREIGN KEY (id) REFERENCES Usuario(id)
 
 create table Locacao (
 id integer not null generated always as identity (start with 1, increment by 1),
-id_cliente integer not null, 
-id_locadora integer not null,
+cpf_cliente integer not null, 
+cnpj_locadora integer not null,
 dia date,
 hora time,
 constraint Locacao_PK PRIMARY KEY (id),
-constraint Locacao_FK1 FOREIGN KEY (id_cliente) REFERENCES Cliente(id),
-constraint Locacao_FK2 FOREIGN KEY (id_locadora) REFERENCES Locadora(id)
+constraint Locacao_FK1 FOREIGN KEY (cpf_cliente) REFERENCES Cliente(cpf),
+constraint Locacao_FK2 FOREIGN KEY (cnpj_locadora) REFERENCES Locadora(cnpj)
 );
 
 

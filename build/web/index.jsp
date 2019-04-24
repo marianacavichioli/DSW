@@ -29,21 +29,20 @@
             <ul>
                 <li><a href="" class="button"> Pagina Inicial</a></li>
                 
-                <sec:authorize access="hasRole('USER')">
+                <sec:authorize access="hasRole('CLIENTE')">
                     <li><a href="locacao_crud/cadastro" class="button">Cadastrar Locacao</a></li>
                 </sec:authorize>
-                
-                <li><a href="logout" class="button">Logout</a></li>
-                
+                                
                 <sec:authorize access="hasRole('ADMIN')">
-                            <li><a href="locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>
-                            <li><a href="locadora_crud/lista" class="button">Lista de Locadoras</a></li>
                     
-                    
-                            <li><a href="cliente_crud/cadastro" class="button">Cadastrar Cliente</a></li>
-                            <li><a href="cliente_crud/lista" class="button">Lista de Clientes</a></li>
-                    </div>
+                    <li><a href="locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>
+                    <li><a href="locadora_crud/lista" class="button">Lista de Locadoras</a></li>
+                    <li><a href="cliente_crud/cadastro" class="button">Cadastrar Cliente</a></li>
+                    <li><a href="cliente_crud/lista" class="button">Lista de Clientes</a></li>
                 </sec:authorize>
+                    
+                <li><a href="logout" class="button">Logout</a></li>
+
 
             </ul>
         </div>

@@ -78,6 +78,9 @@ table, th, td {
 }
 
 .dropbtn {
+    display: inline-block;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
     background-color: #424141;
     border: none;
     color: white;

@@ -6,18 +6,22 @@ import java.sql.Time;
 public class Locacao {
 
     private int id;
-    private int id_cliente;
-    private int id_locadora;
+    private String cpf_cliente;
+    private String cnpj_locadora;
     private Date dia;
     private Time hora;
     
-    public Locacao(int id, int id_cliente, int id_locadora, Date dia, Time hora) {
+    public Locacao(int id, String cpf_cliente, String cnpj_locadora, Date dia, Time hora) {
         this.id = id;
-        this.id_cliente = id_cliente;
-        this.id_locadora = id_locadora;
+        this.cpf_cliente = cpf_cliente;
+        this.cnpj_locadora = cnpj_locadora;
         this.dia = dia;
         this.hora = hora;
     } 
+
+    public Locacao(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;
@@ -27,20 +31,20 @@ public class Locacao {
         this.id = id;
     }
 
-    public int getId_cliente() {
-        return id_cliente;
+    public String getCpf_cliente() {
+        return cpf_cliente;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setCpf_cliente(String cpf_cliente) {
+        this.cpf_cliente = cpf_cliente;
     }
 
-    public int getId_locadora() {
-        return id_locadora;
+    public String getCnpj_locadora() {
+        return cnpj_locadora;
     }
 
-    public void setId_locadora(int id_locadora) {
-        this.id_locadora = id_locadora;
+    public void setCnpj_locadora(String cnpj_locadora) {
+        this.cnpj_locadora = cnpj_locadora;
     }
 
     public Date getDia() {
