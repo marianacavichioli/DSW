@@ -51,7 +51,7 @@ constraint Locacao_FK1 FOREIGN KEY (cpf_cliente) REFERENCES Cliente(cpf),
 constraint Locacao_FK2 FOREIGN KEY (cnpj_locadora) REFERENCES Locadora(cnpj)
 );
 
-Insert into Usuario (email, senha, ativo) values ('admin@admin', 'admin', 1);
-Insert into Papel (email, nome) values ('admin@admin', 'ROLE_ADMIN');
+-- Insert into Usuario (email, senha, ativo) values ('admin@admin', 'admin', 1);
+-- Insert into Papel (email, nome) values ('admin@admin', 'ROLE_ADMIN');
 
 
