@@ -48,9 +48,7 @@ public class ClienteDAO {
     }
 
     public List<Cliente> getAll() {
-        
-        //Pegar senha e email também??
-        
+                
         List<Cliente> listaClientes = new ArrayList<>();
         String sql = "SELECT * FROM Cliente c, Usuario u WHERE c.id = u.id";
         try {
@@ -59,15 +57,15 @@ public class ClienteDAO {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
-                String sexo = resultSet.getString("sexo");
+                String nome = resultSet.getString("nome");
                 String cpf = resultSet.getString("cpf");
                 String telefone = resultSet.getString("telefone");
                 String data_nascimento = resultSet.getString("data_nascimento");
-                String nome = resultSet.getString("nome");
+                String sexo = resultSet.getString("sexo");
                 String email = resultSet.getString("email");
                 int ativo = resultSet.getInt("ativo");
                 
-                Cliente cliente = new Cliente(id, nome, data_nascimento, sexo, cpf, telefone, email, ativo);
+                Cliente cliente = new Cliente(id, nome, cpf, telefone, data_nascimento, sexo, email, ativo);
                 listaClientes.add(cliente);
             }
             resultSet.close();

@@ -4,6 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/mariana/Downloads/DSW/src/java/br/ufscar/dc/dsw/controller/ClienteController.java</file>
+            <file>file:/home/mariana/Downloads/DSW/web/index.jsp</file>
+            <file>file:/home/mariana/Downloads/DSW/src/java/br/ufscar/dc/dsw/dao/ClienteDAO.java</file>
+            <file>file:/home/mariana/Downloads/DSW/src/java/br/ufscar/dc/dsw/model/Cliente.java</file>
+            <file>file:/home/mariana/Downloads/DSW/sql/db.sql</file>
         </group>
     </open-files>
 </project-private>
