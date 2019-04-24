@@ -2,35 +2,35 @@
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
-    
-<style>
-    <%@include file="/estilo.css"%>
-</style>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Aluguel de Bicicletas</title>
+    <style>
+        <%@include file="/estilo.css"%>
+    </style>
 
-<div class= "header">
-    <center>
-    <h1>Aluguel de Bicicletas</h1>
-    </center>
-</div>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Aluguel de Bicicletas</title>
+
+    <div class= "header">
+        <center>
+            <h1>Aluguel de Bicicletas</h1>
+        </center>
+    </div>
 </head>
 
-<body>    
-  
-       <div class ='botoes'>
-            <ul>
-                <li><a href="../index.jsp" class="button"> Pagina Inicial</a></li>
-                <li><a href="locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>
-                <li><a href="cliente_crud/cadastro" class="button">Cadastrar Cliente</a></li>
-                <li><a href="" class="button">Lista de Clientes</a></li>
-                <li><a href="logout" class="button">Logout</a></li>
-            </ul>
-        </div>
-    
-        <div class='conteudo'>  
+<body>   
+
+    <div class ='botoes'>
+        <ul>
+            <li><a href="../index.jsp" class="button"> Pagina Inicial</a></li>
+            <li><a href="locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>
+            <li><a href="cliente_crud/cadastro" class="button">Cadastrar Cliente</a></li>
+            <li><a href="" class="button">Lista de Clientes</a></li>
+            <li><a href="logout" class="button">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class='conteudo'>  
         <table style="width:80%">            
             <caption><h2>Lista de Locadoras</h2></caption>            
             <tr>                

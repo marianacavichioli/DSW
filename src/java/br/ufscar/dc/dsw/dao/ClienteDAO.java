@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteDAO {
+
     public ClienteDAO() {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -28,14 +29,14 @@ public class ClienteDAO {
     public void insert(Cliente cliente) {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         int id = usuarioDAO.insert(cliente);
-        
+
         Papel papel = new Papel(cliente.getEmail(), "ROLE_CLIENTE");
-        
+
         PapelDAO papelDAO = new PapelDAO();
         papelDAO.insert(papel);
-        
+
         System.out.println("papel cliente");
-        
+
         String sql = "INSERT INTO Cliente (id, nome, cpf, telefone, data_nascimento, sexo) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
@@ -57,7 +58,7 @@ public class ClienteDAO {
     }
 
     public List<Cliente> getAll() {
-                
+
         List<Cliente> listaClientes = new ArrayList<>();
         String sql = "SELECT * FROM Cliente c, Usuario u WHERE c.id = u.id";
         try {
@@ -73,7 +74,7 @@ public class ClienteDAO {
                 String sexo = resultSet.getString("sexo");
                 String email = resultSet.getString("email");
                 int ativo = resultSet.getInt("ativo");
-                
+
                 Cliente cliente = new Cliente(id, nome, cpf, telefone, data_nascimento, sexo, email, ativo);
                 listaClientes.add(cliente);
             }
@@ -87,9 +88,8 @@ public class ClienteDAO {
     }
 
     public void delete(Cliente cliente) {
-        
+
         // Quando eu deleto de usuário ainda preciso deletar de cliente??
-        
         String sql = "DELETE FROM Cliente where id = ?";
         try {
             Connection conn = this.getConnection();
@@ -101,12 +101,12 @@ public class ClienteDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        
+
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.delete(cliente);
     }
 
-    public void update(Cliente cliente) {        
+    public void update(Cliente cliente) {
         String sql = "UPDATE Cliente SET nome = ?, cpf = ?, telefone = ?, data_nascimento = ?, sexo = ?";
         sql += " WHERE id = ?";
         try {
@@ -124,7 +124,7 @@ public class ClienteDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        
+
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.update(cliente);
     }
@@ -146,8 +146,8 @@ public class ClienteDAO {
                 String nome = resultSet.getString("nome");
                 String email = resultSet.getString("email");
                 int ativo = resultSet.getInt("ativo");
-                
-                cliente = new Cliente(id, nome, cpf, telefone,data_nascimento, sexo, senha, email, ativo);
+
+                cliente = new Cliente(id, nome, cpf, telefone, data_nascimento, sexo, senha, email, ativo);
             }
             resultSet.close();
             statement.close();
@@ -156,5 +156,43 @@ public class ClienteDAO {
             throw new RuntimeException(e);
         }
         return cliente;
+    }
+
+    public String getCPF(String email) {
+        Cliente cliente = null;
+        //String cpf = null;
+                
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        int id_usuario = usuarioDAO.getID(email);
+        
+        System.out.println("teste id " + id_usuario);
+        
+        String sql = "SELECT * FROM Cliente c, Usuario u WHERE c.id = ? and c.id = u.id";
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, id_usuario);
+            ResultSet resultSet = statement.executeQuery();
+            System.out.println("teste if ");
+            if (resultSet.next()) {
+                String sexo = resultSet.getString("sexo");
+                String cpf = resultSet.getString("cpf");
+                String telefone = resultSet.getString("telefone");
+                String data_nascimento = resultSet.getString("data_nascimento");
+                String senha = resultSet.getString("senha");
+                String nome = resultSet.getString("nome");
+                int ativo = resultSet.getInt("ativo");
+                
+                System.out.println("teste id " + cpf);
+
+                cliente = new Cliente(id_usuario, nome, cpf, telefone, data_nascimento, sexo, senha, email, ativo);
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return cliente.getCpf();
     }
 }

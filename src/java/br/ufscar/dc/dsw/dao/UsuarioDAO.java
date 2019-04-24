@@ -104,9 +104,7 @@ public class UsuarioDAO {
     }
 
     public void update(Usuario usuario) {
-        
-        System.out.println("ENTREI USUARIO DAO"); 
-        
+                
         String sql = "UPDATE Usuario SET email = ?, senha = ?, ativo = ?";
         sql += " WHERE id = ?";
         try {
@@ -145,6 +143,32 @@ public class UsuarioDAO {
             throw new RuntimeException(e);
         }
         return usuario;
+    }
+    
+    public int getID(String email) {
+        Usuario usuario = null;
+        
+        System.out.println("teste usuariodao " + email);
+        
+        String sql = "SELECT * FROM Usuario WHERE email = ?";
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String senha = resultSet.getString("senha");
+                int ativo = resultSet.getInt("ativo");
+                usuario = new Usuario(id, senha, email, ativo);
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return usuario.getId();
     }
 }
 

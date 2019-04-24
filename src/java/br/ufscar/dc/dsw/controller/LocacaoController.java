@@ -96,6 +96,16 @@ public class LocacaoController extends HttpServlet {
             throws IOException, ParseException {
                                 
         request.setCharacterEncoding("UTF-8");
+        
+        String email = request.getParameter("email");
+        
+        System.out.println("era pra ter email " + email);
+        
+        ClienteDAO clienteDAO = new ClienteDAO();
+        String cpf_cliente = clienteDAO.getCPF(email);
+        
+        System.out.println("era pra ter cpf" + cpf_cliente);
+        
         //String cpf_cliente = request.getParameter("cpf_cliente");
         String cnpj_locadora = request.getParameter("cnpj_locadora");
         String dia = request.getParameter("dia");
@@ -104,7 +114,7 @@ public class LocacaoController extends HttpServlet {
         System.out.println("Hora: ");
         System.out.println(hora);
         
-        Locacao locacao = new Locacao(-1, "11111111111", cnpj_locadora, dia, hora);
+        Locacao locacao = new Locacao(-1, cpf_cliente, cnpj_locadora, dia, hora);
         daoLocacao.insert(locacao);
         
         response.sendRedirect("lista");
