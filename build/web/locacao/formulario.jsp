@@ -6,6 +6,18 @@
     <style>
         <%@include file="/estilo.css"%>
     </style>
+    
+    <script>
+        function formatar(mascara, documento){
+          var i = documento.value.length;
+          var saida = mascara.substring(0,1);
+          var texto = mascara.substring(i)
+
+          if (texto.substring(0,1) != saida){
+                    documento.value += texto.substring(0,1);
+          }
+        }
+    </script>
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -51,16 +63,9 @@
                     <input type="hidden" name="id" value="<c:out value='${locacao.id}'/>" />                    
                 </c:if>
                 <tr>                        
-                    <th>CPF do Cliente: </th>                        
-                    <td>                            
-                        <input type="text" name="cpf" size="11" 
-                               required value="<c:out value='${locacao.cpf}'/>"/>                        
-                    </td>                    
-                </tr>                    
-                <tr>                        
                     <th>CNPJ Locadora: </th>                        
                     <td>                            
-                        <input type="text" name="cnpj" size="15"                                   
+                        <input type="text" name="cnpj_locadora" maxlength="18"                                   
                                required value="<c:out value='${locacao.cnpj}'/>"/>                        
                     </td>                    
                 </tr>                    
@@ -74,7 +79,7 @@
                 <tr>                        
                     <th>Horario: </th>                    
                     <td>                            
-                        <input type="time" name="hora"                                   
+                        <input type="text" name="hora" maxlength="5" OnKeyPress="formatar('##:##', this)"                                    
                                value="<c:out value='${locadora.hora}' />"                                   
                                />                        
                     </td>                    

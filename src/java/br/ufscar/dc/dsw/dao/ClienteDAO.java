@@ -3,6 +3,7 @@ package br.ufscar.dc.dsw.dao;
 import br.ufscar.dc.dsw.model.Cliente;
 import br.ufscar.dc.dsw.model.Papel;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -105,19 +106,18 @@ public class ClienteDAO {
         usuarioDAO.delete(cliente);
     }
 
-    public void update(Cliente cliente) {
-               
+    public void update(Cliente cliente) {        
         String sql = "UPDATE Cliente SET nome = ?, cpf = ?, telefone = ?, data_nascimento = ?, sexo = ?";
         sql += " WHERE id = ?";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, cliente.getId());
-            statement.setString(2, cliente.getNome());
-            statement.setString(3, cliente.getCpf());
-            statement.setString(4, cliente.getTelefone());
-            statement.setString(5, cliente.getData_nascimento());
-            statement.setString(6, cliente.getSexo());
+            statement.setString(1, cliente.getNome());
+            statement.setString(2, cliente.getCpf());
+            statement.setString(3, cliente.getTelefone());
+            statement.setString(4, cliente.getData_nascimento());
+            statement.setString(5, cliente.getSexo());
+            statement.setInt(6, cliente.getId());
             statement.executeUpdate();
             statement.close();
             conn.close();

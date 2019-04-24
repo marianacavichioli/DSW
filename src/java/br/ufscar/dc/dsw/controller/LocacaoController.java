@@ -11,10 +11,13 @@ import br.ufscar.dc.dsw.dao.LocacaoDAO;
 import br.ufscar.dc.dsw.dao.UsuarioDAO;
 import br.ufscar.dc.dsw.model.Locacao;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.Time;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -64,6 +67,8 @@ public class LocacaoController extends HttpServlet {
             }
         } catch (RuntimeException | IOException | ServletException e) {
             throw new ServletException(e);
+        } catch (ParseException ex) {
+            Logger.getLogger(LocacaoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -88,30 +93,33 @@ public class LocacaoController extends HttpServlet {
     }
 
     private void insere(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
-                        
+            throws IOException, ParseException {
+                                
         request.setCharacterEncoding("UTF-8");
-        String cpf_cliente = request.getParameter("cpf_cliente");
+        //String cpf_cliente = request.getParameter("cpf_cliente");
         String cnpj_locadora = request.getParameter("cnpj_locadora");
-        //Date dia = request.getParameter("dia");
-        //Time hora = request.getParameter("hora");
-                
-        //Locacao locacao = new Locacao(-1, cpf_cliente, cnpj_locadora, dia, hora);
-        //daoLocacao.insert(locacao);
+        String dia = request.getParameter("dia");
+        String hora = request.getParameter("hora");
+        
+        System.out.println("Hora: ");
+        System.out.println(hora);
+        
+        Locacao locacao = new Locacao(-1, "11111111111", cnpj_locadora, dia, hora);
+        daoLocacao.insert(locacao);
         
         response.sendRedirect("lista");
     }
 
-    private void atualize(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void atualize(HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException {
         request.setCharacterEncoding("UTF-8");
         int id = Integer.parseInt(request.getParameter("id"));
         String cpf_cliente = request.getParameter("cpf_cliente");
         String cnpj_locadora = request.getParameter("cnpj_locadora");
-        //Date dia = request.getParameter("dia");
-        //Time hora = request.getParameter("hora");
+        String dia = request.getParameter("dia");
+        String hora = request.getParameter("hora");
         
-        //Locacao locacao = new Locacao(-1, cpf_cliente, cnpj_locadora, dia, hora);
-        //daoLocacao.update(locacao);
+        Locacao locacao = new Locacao(-1, cpf_cliente, cnpj_locadora, dia, hora);
+        daoLocacao.update(locacao);
         response.sendRedirect("lista");
     }
 

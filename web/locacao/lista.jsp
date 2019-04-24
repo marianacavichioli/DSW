@@ -33,29 +33,19 @@
         <div class='conteudo'>
                    
         <table style="width: 80%">            
-            <caption><h2>Lista de Clientes</h2></caption>            
+            <caption><h2>Lista de Locações</h2></caption>            
             <tr>                
                 <th>ID</th>                
-                <th>Nome</th>                
-                <th>CPF</th>                
-                <th>Telefone</th>                
-                <th>Data Nascimento</th>              
-                <th>Sexo</th>
-                <th>Email</th>
-                <th>Ativo</th> 
+                <th>CNPJ Locadora</th>                
+                <th>Dia</th>                
+                <th>Hora</th>                
             </tr>            
-            <c:forEach var="locacao" items="${listaLocacoess}">                
+            <c:forEach var="locacao" items="${listaLocacoes}">                
                 <tr>                    
                     <td><c:out value="${locacao.id}" /></td>                    
                     <td><c:out value="${locacao.cnpj_locadora}" /></td>                    
                     <td><c:out value="${locacao.dia}" /></td>                    
                     <td><c:out value="${locacao.hora}" /></td>
-                    <td><a href="edicao?id=<c:out value='${locacao.id}' />">Edição</a>                        
-                        &nbsp;&nbsp;&nbsp;&nbsp;                        
-                        <a href="remocao?id=<c:out value='${locacao.id}' />
-                           "onclick="return confirm('Tem certeza de que deseja excluir este item?');">
-                            Remoção
-                        </a></td>                
                 </tr>            
             </c:forEach>        
         </table>    

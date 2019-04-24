@@ -111,10 +111,10 @@ public class LocadoraDAO {
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, locadora.getId());
-            statement.setString(2, locadora.getNome());
-            statement.setString(3, locadora.getCnpj());
-            statement.setString(4, locadora.getCidade());
+            statement.setString(1, locadora.getNome());
+            statement.setString(2, locadora.getCnpj());
+            statement.setString(3, locadora.getCidade());
+            statement.setInt(4, locadora.getId());
             statement.executeUpdate();
             statement.close();
             conn.close();

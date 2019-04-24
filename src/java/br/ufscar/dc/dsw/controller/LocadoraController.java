@@ -116,7 +116,7 @@ public class LocadoraController extends HttpServlet{
         String senha = request.getParameter("senha");
         int ativo = 1;
         
-        Locadora locadora = new Locadora(-1, nome, cnpj, cidade, senha, email, ativo);
+        Locadora locadora = new Locadora(id, nome, cnpj, cidade, senha, email, ativo);
         daoLocadora.update(locadora);
         response.sendRedirect("lista");
     }
