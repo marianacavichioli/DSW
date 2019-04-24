@@ -31,8 +31,13 @@
                 
                 <sec:authorize access="hasRole('CLIENTE')">
                     <li><a href="locacao_crud/cadastro" class="button">Cadastrar Locacao</a></li>
+                    <li><a href="locacao_crud/lista" class="button">Lista de Locações</a></li>
                 </sec:authorize>
-                                
+                    
+                <sec:authorize access="hasRole('LOCADORA')">
+                    <li><a href="locacao_crud/lista" class="button">Lista de Locações</a></li>
+                </sec:authorize>
+                                                    
                 <sec:authorize access="hasRole('ADMIN')">
                     
                     <li><a href="locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>

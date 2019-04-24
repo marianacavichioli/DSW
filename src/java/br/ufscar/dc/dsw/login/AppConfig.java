@@ -37,6 +37,7 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/cliente_crud/**").hasRole("ADMIN")
                 .antMatchers("/locacao_crud/**").hasRole("CLIENTE")
+                .antMatchers("/locacao_crud/**").hasRole("LOCADORA")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()

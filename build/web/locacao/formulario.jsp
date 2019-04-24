@@ -59,40 +59,38 @@
                         <br>
                         <br>
                     </c:if>                                           
-                    <c:if test="${locacao != null}">                        
-                        <input type="hidden" name="id" value="<c:out value='${locacao.id}'/>" />                    
-                    </c:if>
-                                                
-                    <input type="hidden" name="email" value="<c:out value='<%=request.getUserPrincipal().getName().toString()%>'/>" />                   
-                    <tr>                        
-                        <th>CNPJ Locadora: </th>                        
-                        <td>                            
-                            <input type="text" name="cnpj_locadora" maxlength="18"                                   
-                                   required value="<c:out value='${locacao.cnpj}'/>"/>                        
-                        </td>                    
-                    </tr>                    
-                    <tr>                        
-                        <th>Data: </th>                        
-                        <td>                            
-                            <input type="date" name="dia"                                  
-                                   value="<c:out value='${locadora.dia}'/>"/>                        
-                        </td>                    
-                    </tr>                    
-                    <tr>                        
-                        <th>Horario: </th>                    
-                        <td>                            
-                            <input type="text" name="hora" maxlength="5" OnKeyPress="formatar('##:##', this)"                                    
-                                   value="<c:out value='${locadora.hora}' />"                                   
-                                   />                        
-                        </td>                    
-                    </tr>
-                    <tr>                        
-                        <td colspan="2" align="center">                            
-                            <input type="submit" value="Salvar" />                        
-                        </td>                    
-                    </tr>                
-                </table>            
-            </form>    
-    </div>
+                <c:if test="${locacao != null}">                        
+                    <input type="hidden" name="id" value="<c:out value='${locacao.id}'/>" />                    
+                </c:if>
+                <tr>                        
+                    <th>CNPJ Locadora: </th>                        
+                    <td>                            
+                        <input type="text" name="cnpj_locadora" maxlength="18" OnKeyPress="formatar('##.###.###/####-## ', this)"                                   
+                               required value="<c:out value='${locacao.cnpj}'/>"/>                        
+                    </td>                    
+                </tr>                    
+                <tr>                        
+                    <th>Data: </th>                        
+                    <td>                            
+                        <input type="date" name="dia"                                  
+                               value="<c:out value='${locadora.dia}'/>"/>                        
+                    </td>                    
+                </tr>                    
+                <tr>                        
+                    <th>Horario: </th>                    
+                    <td>                            
+                        <input type="text" name="hora" maxlength="5" OnKeyPress="formatar('##:##', this)"                                    
+                               value="<c:out value='${locadora.hora}' />"                                   
+                               />                        
+                    </td>                    
+                </tr>
+                <tr>                        
+                    <td colspan="2" align="center">                            
+                        <input type="submit" value="Salvar" />                        
+                    </td>                    
+                </tr>                
+            </table>            
+        </form>    
+</div>
 </body>
 </html>

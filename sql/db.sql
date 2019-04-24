@@ -18,7 +18,7 @@ create table Cliente (
 id integer UNIQUE,
 nome varchar(100) not null,
 cpf varchar(14),
-telefone varchar(11),
+telefone varchar(14),
 data_nascimento varchar(50),
 sexo varchar(50),
 constraint Cliente_PK PRIMARY KEY (cpf),
