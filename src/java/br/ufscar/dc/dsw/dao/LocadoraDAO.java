@@ -2,6 +2,7 @@ package br.ufscar.dc.dsw.dao;
 
 import br.ufscar.dc.dsw.model.Cliente;
 import br.ufscar.dc.dsw.model.Locadora;
+import br.ufscar.dc.dsw.model.Papel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -28,6 +29,13 @@ public class LocadoraDAO {
     public void insert(Locadora locadora) {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         int id = usuarioDAO.insert(locadora);
+        
+        Papel papel = new Papel(locadora.getEmail(), "ROLE_LOCADORA");
+        
+        PapelDAO papelDAO = new PapelDAO();
+        papelDAO.insert(papel);
+        
+        System.out.println("papel locadora");
         
         String sql = "INSERT INTO Locadora (id, nome, cnpj, cidade) VALUES (?, ?, ?, ?)";
         try {
