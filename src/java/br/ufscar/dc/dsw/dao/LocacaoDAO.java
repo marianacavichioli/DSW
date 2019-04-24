@@ -28,16 +28,15 @@ public class LocacaoDAO {
 
     public void insert(Locacao locacao) {
                 
-        String sql = "INSERT INTO Locacao (id, cpf_cliente, cnpj_locadora, dia, hora) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Locacao (cpf_cliente, cnpj_locadora, dia, hora) VALUES (?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);;
             statement = conn.prepareStatement(sql);
-            statement.setInt(1, locacao.getId());
-            statement.setString(2, locacao.getCpf_cliente());
-            statement.setString(3, locacao.getCnpj_locadora());
-            statement.setString(4, locacao.getDia());
-            statement.setString(5, locacao.getHora());
+            statement.setString(1, locacao.getCpf_cliente());
+            statement.setString(2, locacao.getCnpj_locadora());
+            statement.setString(3, locacao.getDia());
+            statement.setString(4, locacao.getHora());
 
             statement.executeUpdate();
             statement.close();

@@ -94,19 +94,18 @@ public class LocacaoController extends HttpServlet {
 
     private void insere(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ParseException {
-        
-        System.out.println("Entrei Insere Controller");
-                        
+                                
         request.setCharacterEncoding("UTF-8");
         //String cpf_cliente = request.getParameter("cpf_cliente");
         String cnpj_locadora = request.getParameter("cnpj_locadora");
-        
         String dia = request.getParameter("dia");
         String hora = request.getParameter("hora");
         
-                
+        System.out.println("Hora: ");
+        System.out.println(hora);
+        
         Locacao locacao = new Locacao(-1, "11111111111", cnpj_locadora, dia, hora);
-        //daoLocacao.insert(locacao);
+        daoLocacao.insert(locacao);
         
         response.sendRedirect("lista");
     }

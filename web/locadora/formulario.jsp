@@ -6,6 +6,19 @@
     <style>
         <%@include file="/estilo.css"%>
     </style>
+    
+    <script>
+        function formatar(mascara, documento){
+          var i = documento.value.length;
+          var saida = mascara.substring(0,1);
+          var texto = mascara.substring(i)
+
+          if (texto.substring(0,1) != saida){
+                    documento.value += texto.substring(0,1);
+          }
+
+        }
+    </script>
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -59,7 +72,7 @@
                 <tr>                        
                     <th>CNPJ: </th>                        
                     <td>                            
-                        <input type="text" name="cnpj" size="15"                                   
+                        <input type="text" name="cnpj" maxlength="18" OnKeyPress="formatar('##.###.###/####-## ', this)"                                   
                                required value="<c:out value='${locadora.cnpj}'/>"/>                        
                     </td>                    
                 </tr>                                     
