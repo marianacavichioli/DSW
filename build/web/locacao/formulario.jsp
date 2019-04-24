@@ -65,7 +65,7 @@
                 <tr>                        
                     <th>CNPJ Locadora: </th>                        
                     <td>                            
-                        <input type="text" name="cnpj_locadora" maxlength="18"                                   
+                        <input type="text" name="cnpj_locadora" maxlength="18" OnKeyPress="formatar('##.###.###/####-## ', this)"                                   
                                required value="<c:out value='${locacao.cnpj}'/>"/>                        
                     </td>                    
                 </tr>                    
