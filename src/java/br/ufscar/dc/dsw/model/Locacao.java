@@ -8,10 +8,10 @@ public class Locacao {
     private int id;
     private String cpf_cliente;
     private String cnpj_locadora;
-    private Date dia;
-    private Time hora;
+    private String dia;
+    private String hora;
     
-    public Locacao(int id, String cpf_cliente, String cnpj_locadora, Date dia, Time hora) {
+    public Locacao(int id, String cpf_cliente, String cnpj_locadora, String dia, String hora) {
         this.id = id;
         this.cpf_cliente = cpf_cliente;
         this.cnpj_locadora = cnpj_locadora;
@@ -47,19 +47,19 @@ public class Locacao {
         this.cnpj_locadora = cnpj_locadora;
     }
 
-    public Date getDia() {
+    public String getDia() {
         return dia;
     }
 
-    public void setDia(Date dia) {
+    public void setDia(String dia) {
         this.dia = dia;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
     

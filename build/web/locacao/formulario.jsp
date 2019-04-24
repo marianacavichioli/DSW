@@ -51,13 +51,6 @@
                     <input type="hidden" name="id" value="<c:out value='${locacao.id}'/>" />                    
                 </c:if>
                 <tr>                        
-                    <th>CPF do Cliente: </th>                        
-                    <td>                            
-                        <input type="text" name="cpf" size="11" 
-                               required value="<c:out value='${locacao.cpf}'/>"/>                        
-                    </td>                    
-                </tr>                    
-                <tr>                        
                     <th>CNPJ Locadora: </th>                        
                     <td>                            
                         <input type="text" name="cnpj" size="15"                                   

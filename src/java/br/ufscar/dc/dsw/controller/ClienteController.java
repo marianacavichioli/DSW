@@ -104,6 +104,7 @@ public class ClienteController extends HttpServlet {
     }
 
     private void atualize(HttpServletRequest request, HttpServletResponse response) throws IOException {
+       
         request.setCharacterEncoding("UTF-8");
         int id = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");
@@ -115,7 +116,7 @@ public class ClienteController extends HttpServlet {
         String senha = request.getParameter("senha");
         int ativo = 1;
         
-        Cliente cliente = new Cliente(-1, nome, cpf, telefone, data_nascimento,sexo, senha, email, ativo);
+        Cliente cliente = new Cliente(id, nome, cpf, telefone, data_nascimento, sexo, senha, email, ativo);
         daoCliente.update(cliente);
         response.sendRedirect("lista");
     }

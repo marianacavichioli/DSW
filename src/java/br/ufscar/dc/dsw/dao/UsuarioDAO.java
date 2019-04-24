@@ -100,6 +100,9 @@ public class UsuarioDAO {
     }
 
     public void update(Usuario usuario) {
+        
+        System.out.println("ENTREI USUARIO DAO"); 
+        
         String sql = "UPDATE Usuario SET email = ?, senha = ?, ativo = ?";
         sql += " WHERE id = ?";
         try {

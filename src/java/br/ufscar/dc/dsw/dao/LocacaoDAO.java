@@ -27,7 +27,7 @@ public class LocacaoDAO {
     }
 
     public void insert(Locacao locacao) {
-        
+                
         String sql = "INSERT INTO Locacao (id, cpf_cliente, cnpj_locadora, dia, hora) VALUES (?, ?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
@@ -36,8 +36,8 @@ public class LocacaoDAO {
             statement.setInt(1, locacao.getId());
             statement.setString(2, locacao.getCpf_cliente());
             statement.setString(3, locacao.getCnpj_locadora());
-            statement.setDate(4, locacao.getDia());
-            statement.setTime(5, locacao.getHora());
+            statement.setString(4, locacao.getDia());
+            statement.setString(5, locacao.getHora());
 
             statement.executeUpdate();
             statement.close();
@@ -59,8 +59,8 @@ public class LocacaoDAO {
                 int id = resultSet.getInt("id");
                 String cpf_cliente = resultSet.getString("cpf_cliente");
                 String cnpj_locadora = resultSet.getString("cnpj_locadora");
-                Date dia = resultSet.getDate("dia");
-                Time hora = resultSet.getTime("hora");
+                String dia = resultSet.getString("dia");
+                String hora = resultSet.getString("hora");
                 
                 Locacao locacao = new Locacao(id, cpf_cliente, cnpj_locadora, dia, hora);
                 listaLocacoes.add(locacao);
@@ -99,8 +99,8 @@ public class LocacaoDAO {
             statement.setInt(1, locacao.getId());
             statement.setString(2, locacao.getCpf_cliente());
             statement.setString(3, locacao.getCnpj_locadora());
-            statement.setDate(4, locacao.getDia());
-            statement.setTime(5, locacao.getHora());
+            statement.setString(4, locacao.getDia());
+            statement.setString(5, locacao.getHora());
             statement.executeUpdate();
             statement.close();
             conn.close();
@@ -120,8 +120,8 @@ public class LocacaoDAO {
             if (resultSet.next()) {
                 String cpf_cliente = resultSet.getString("cpf_cliente");
                 String cnpj_locadora = resultSet.getString("cnpj_locadora");
-                Date dia = resultSet.getDate("dia");
-                Time hora = resultSet.getTime("hora");
+                String dia = resultSet.getString("dia");
+                String hora = resultSet.getString("hora");
                 
                 locacao = new Locacao(id, cpf_cliente, cnpj_locadora, dia, hora);
             }
