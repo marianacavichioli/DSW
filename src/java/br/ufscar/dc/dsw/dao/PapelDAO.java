@@ -5,7 +5,7 @@
  */
 package br.ufscar.dc.dsw.dao;
 
-import br.ufscar.dc.dsw.model.Usuario;
+import br.ufscar.dc.dsw.model.Papel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,20 +14,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  *
- * @author mariana
+ * @author rafaelsaito
  */
-public class UsuarioDAO {
-    
-    static Connection currentCon = null; 
+public class PapelDAO {
+static Connection currentCon = null; 
     static ResultSet rs = null; 
-    
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public UsuarioDAO() {
+    public PapelDAO() {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
         } catch (ClassNotFoundException e) {
@@ -39,35 +35,25 @@ public class UsuarioDAO {
         return DriverManager.getConnection("jdbc:derby://localhost:1527/Locacao", "root", "root");
     }
 
-    public int insert(Usuario usuario) {
-        int id;
-        String sql = "INSERT INTO Usuario (email, senha, ativo) VALUES (?, ?, ?)";
+    public void insert(Papel papel) {
+        String sql = "INSERT INTO Papel (email, nome) VALUES (?, ?)";
         try {
-            
             Connection conn = this.getConnection();
-            PreparedStatement statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, usuario.getEmail());
-            statement.setString(2, encoder.encode(usuario.getSenha()));
-            statement.setInt(3, usuario.getAtivo());
+            PreparedStatement statement = conn.prepareStatement(sql);;
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, papel.getEmail());
+            statement.setString(2, papel.getNome());
             statement.executeUpdate();
-
-            ResultSet rs = statement.getGeneratedKeys();
-            rs.next();
-            id = rs.getInt(1);
-
             statement.close();
             conn.close();
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-        return id;
     }
 
-    public List<Usuario> getAll() {
-        List<Usuario> listaUsuarios = new ArrayList<>();
-        String sql = "SELECT * FROM Usuario";
+    public List<Papel> getAll() {
+        List<Papel> listaPapel = new ArrayList<>();
+        String sql = "SELECT * FROM Papel";
         try {
             Connection conn = this.getConnection();
             Statement statement = conn.createStatement();
@@ -75,10 +61,9 @@ public class UsuarioDAO {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String email = resultSet.getString("email");
-                String senha = resultSet.getString("senha");
-                int ativo = resultSet.getInt("ativo");
-                Usuario usuario = new Usuario(senha, email, ativo);
-                listaUsuarios.add(usuario);
+                String nome = resultSet.getString("nome");
+                Papel papel = new Papel(email, nome);
+                listaPapel.add(papel);
             }
             resultSet.close();
             statement.close();
@@ -86,15 +71,15 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return listaUsuarios;
+        return listaPapel;
     }
 
-    public void delete(Usuario usuario) {
-        String sql = "DELETE FROM Usuario where id = ?";
+    public void delete(Papel papel) {
+        String sql = "DELETE FROM Papel where id = ?";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, usuario.getId());
+            statement.setInt(1, papel.getId());
             statement.executeUpdate();
             statement.close();
             conn.close();
@@ -103,16 +88,15 @@ public class UsuarioDAO {
         }
     }
 
-    public void update(Usuario usuario) {
-        String sql = "UPDATE Usuario SET email = ?, senha = ?, ativo = ?";
+    public void update(Papel usuario) {
+        String sql = "UPDATE Papel SET email = ?, nome = ?";
         sql += " WHERE id = ?";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, usuario.getEmail());
-            statement.setString(2, encoder.encode(usuario.getSenha()));
-            statement.setInt(3, usuario.getAtivo());
-            statement.setInt(4, usuario.getId());
+            statement.setString(2, usuario.getNome());
+            statement.setInt(3, usuario.getId());
             statement.executeUpdate();
             statement.close();
             conn.close();
@@ -121,9 +105,9 @@ public class UsuarioDAO {
         }
     }
 
-    public Usuario get(int id) {
-        Usuario usuario = null;
-        String sql = "SELECT * FROM Usuario WHERE id = ?";
+    public Papel get(int id) {
+        Papel papel = null;
+        String sql = "SELECT * FROM Papel WHERE id = ?";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -131,9 +115,8 @@ public class UsuarioDAO {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 String email = resultSet.getString("email");
-                String senha = resultSet.getString("senha");
-                int ativo = resultSet.getInt("ativo");
-                usuario = new Usuario(senha, email, ativo);
+                String nome = resultSet.getString("nome");
+                papel = new Papel(email, nome);
             }
             resultSet.close();
             statement.close();
@@ -141,7 +124,6 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return usuario;
+        return papel;
     }
 }
-

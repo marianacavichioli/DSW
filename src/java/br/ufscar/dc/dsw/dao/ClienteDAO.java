@@ -1,6 +1,7 @@
 package br.ufscar.dc.dsw.dao;
 
 import br.ufscar.dc.dsw.model.Cliente;
+import br.ufscar.dc.dsw.model.Papel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,6 +27,13 @@ public class ClienteDAO {
     public void insert(Cliente cliente) {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         int id = usuarioDAO.insert(cliente);
+        
+        Papel papel = new Papel(cliente.getEmail(), "ROLE_CLIENTE");
+        
+        PapelDAO papelDAO = new PapelDAO();
+        papelDAO.insert(papel);
+        
+        System.out.println("papel cliente");
         
         String sql = "INSERT INTO Cliente (id, nome, cpf, telefone, data_nascimento, sexo) VALUES (?, ?, ?, ?, ?, ?)";
         try {
