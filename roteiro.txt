@@ -1,0 +1,15 @@
+Roteiro para execução do projeto:
+
+- SGBD utilizado: JavaBD
+- O banco se chama Locacao, e para seu funcionamento correto é recomendado criá-lo novamente ao executar o projeto pela primeira vez. O usuário e senha de acesso são "root".
+- Para que as tabelas sejam criadas é necessário acessar o arquivo "db.sql", localizado em Files > Locacao > sql. Quando acessado o arquivo, clicar no botão "Run SQL" (ou CTRL+Shift+E).
+- Não há scripts de inserção. Para testes no banco, favor cadastrar os clientes/locadoras/locações através da aplicação web.
+
+- Para que os logins funcionem, é necessário acessar o arquivo "CriaUsuarios.java", localizado em Locacao > Pacotes de Código-fontes > br.ufscar.dc.dsw.login. Clicar com o botão direito do mouse no arquivo e selecionar "Run File" (ou Shift+F6)
+- Os usuários de Cliente e Locadora são criados assim que cadastrados no banco de dados através da aplicação.
+
+- O login e senha para acesso ao sistema como administrador são
+    Usuário: admin@admin
+    Senha: admin
+
+
