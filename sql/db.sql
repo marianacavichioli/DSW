@@ -22,7 +22,7 @@ telefone varchar(14),
 data_nascimento varchar(50),
 sexo varchar(50),
 constraint Cliente_PK PRIMARY KEY (cpf),
-constraint Cliente_FK FOREIGN KEY (id) REFERENCES Usuario(id)
+constraint Cliente_FK FOREIGN KEY (id) REFERENCES Usuario(id) ON DELETE CASCADE
 );
 
 create table Locadora (
@@ -31,13 +31,8 @@ nome varchar(100) not null,
 cnpj varchar(18),
 cidade varchar(50),
 constraint Locadora_PK PRIMARY KEY (cnpj),
-constraint Locadora_FK FOREIGN KEY (id) REFERENCES Usuario(id)
-);
+constraint Locadora_FK FOREIGN KEY (id) REFERENCES Usuario(id) ON DELETE CASCADE
 
-create table Administrador (
-id integer,
-constraint Admin_PK PRIMARY KEY (id),
-constraint Admin_FK FOREIGN KEY (id) REFERENCES Usuario(id)
 );
 
 create table Locacao (
@@ -47,11 +42,8 @@ cnpj_locadora varchar(18) not null,
 dia varchar(50),
 hora varchar(50),
 constraint Locacao_PK PRIMARY KEY (id),
-constraint Locacao_FK1 FOREIGN KEY (cpf_cliente) REFERENCES Cliente(cpf),
-constraint Locacao_FK2 FOREIGN KEY (cnpj_locadora) REFERENCES Locadora(cnpj)
+constraint Locacao_FK1 FOREIGN KEY (cpf_cliente) REFERENCES Cliente(cpf) ON DELETE CASCADE,
+constraint Locacao_FK2 FOREIGN KEY (cnpj_locadora) REFERENCES Locadora(cnpj) ON DELETE CASCADE
 );
-
-Insert into Usuario (email, senha, ativo) values ('admin@admin', 'admin', 1);
-Insert into Papel (email, nome) values ('admin@admin', 'ROLE_ADMIN');
 
 
