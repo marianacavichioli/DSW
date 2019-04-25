@@ -31,7 +31,10 @@
         </ul>
     </div>
 
-    <div class='conteudo'>  
+    <div class='conteudo'> 
+        
+        <p> Escolha sua cidade: <input type="search"> </p>
+        
         <table style="width:80%">            
             <caption><h2>Lista de Locadoras</h2></caption>            
             <tr>                
