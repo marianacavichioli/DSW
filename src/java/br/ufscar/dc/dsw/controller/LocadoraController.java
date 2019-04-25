@@ -60,6 +60,8 @@ public class LocadoraController extends HttpServlet{
                 case "atualizacao":
                     atualize(request, response);
                     break;
+                case "pesquisa":
+                    pesquisa(request, response);
                 default:
                     lista(request, response);
                     break;
@@ -126,5 +128,17 @@ public class LocadoraController extends HttpServlet{
         Locadora locadora = new Locadora(id);
         daoLocadora.delete(locadora);
         response.sendRedirect("lista");
+    }
+    
+    private void pesquisa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        request.setCharacterEncoding("UTF-8");
+        String busca = request.getParameter("busca");
+        
+        List<Locadora> listaLocadoras = daoLocadora.getAllCidades(busca);
+        request.setAttribute("listaLocadoras", listaLocadoras);
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/locadora/lista.jsp");
+        dispatcher.forward(request, response);
     }
 }

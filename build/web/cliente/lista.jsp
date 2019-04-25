@@ -22,7 +22,6 @@
 
        <div class ='botoes'>
             <ul>
-                <li><a href="../locadora_crud/lista" class="button"> Pagina Inicial</a></li>
                 <li><a href="../locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>
                 <li><a href="../locadora_crud/lista" class="button">Lista de Locadoras</a></li>
                 <li><a href="cadastro" class="button">Cadastrar Cliente</a></li>

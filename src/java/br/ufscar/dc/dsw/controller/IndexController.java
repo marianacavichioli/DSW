@@ -57,6 +57,8 @@ public class IndexController extends HttpServlet{
                 case "atualizacao":
                     atualize(request, response);
                     break;
+                case "pesquisa":
+                    pesquisa(request, response);
                 default:
                     break;
             }
@@ -115,6 +117,18 @@ public class IndexController extends HttpServlet{
         Locadora locadora = new Locadora(id);
         daoLocadora.delete(locadora);
         response.sendRedirect("/Locacao/");
+    }
+    
+    private void pesquisa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        request.setCharacterEncoding("UTF-8");
+        String busca = request.getParameter("busca");
+        
+        List<Locadora> listaLocadoras = daoLocadora.getAllCidades(busca);
+        request.setAttribute("listaLocadoras", listaLocadoras);
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/locadora/lista.jsp");
+        dispatcher.forward(request, response);
     }
 }
 

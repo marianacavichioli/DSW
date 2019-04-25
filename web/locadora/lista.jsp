@@ -22,7 +22,6 @@
 
     <div class ='botoes'>
         <ul>
-            <li><a href="" class="button"> Pagina Inicial</a></li>
             <li><a href="cadastro" class="button">Cadastrar Locadora</a></li>
             <li><a href="" class="button">Lista de Locadoras</a></li>
             <li><a href="../cliente_crud/cadastro" class="button">Cadastrar Cliente</a></li>
@@ -32,9 +31,13 @@
     </div>
 
     <div class='conteudo'> 
-        
-        <p> Escolha sua cidade: <input type="search"> </p>
-        
+
+        <form action="pesquisa" method="post">
+            <label for="busca">Escolha sua cidade:</label>
+            <input type="search" id="busca" name="busca">
+            <button type="submit">OK</button>
+        </form>
+
         <table style="width:80%">            
             <caption><h2>Lista de Locadoras</h2></caption>            
             <tr>                

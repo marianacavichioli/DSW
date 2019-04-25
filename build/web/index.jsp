@@ -29,9 +29,7 @@
 
 <body>
         <div class ='botoes'>
-            <ul>
-                <li><a href="" class="button"> Pagina Inicial</a></li>
-                
+            <ul>                
                 <sec:authorize access="hasAnyRole('CLIENTE')">
                     <li><a href="locacao_crud/cadastro" class="button">Cadastrar Locação</a></li>
                 </sec:authorize>
@@ -47,13 +45,18 @@
                     <li><a href="cliente_crud/lista" class="button">Lista de Clientes</a></li>
                 </sec:authorize>
 
-            <li><a href="logout" class="button">Logout</a></li>
+                <li><a href="logout" class="button">Logout</a></li>
 
             </ul>
         </div>
        
         <div class ='conteudo'>
-        <p> Escolha sua cidade: <input type="search"> </p>
+            
+        <form action="pesquisa" method="post">
+            <label for="busca">Escolha sua cidade:</label>
+            <input type="search" id="busca" name="busca">
+            <button type="submit">OK</button>
+        </form>
         
         <h3> Lista de Locadoras <h3>
          <table style="width:80%">                       

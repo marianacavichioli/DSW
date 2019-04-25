@@ -180,4 +180,33 @@ public class LocadoraDAO {
         }
         return locadora.getCnpj();
     }
+    
+    public List<Locadora> getAllCidades(String busca) {
+            
+        List<Locadora> listaLocadoras = new ArrayList<>();
+        String sql = "SELECT * FROM Locadora c, Usuario u WHERE c.id = u.id and c.cidade = ?";
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, busca);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String cnpj = resultSet.getString("cnpj");
+                String cidade = resultSet.getString("cidade");
+                String nome = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                int ativo = resultSet.getInt("ativo");
+                
+                Locadora locadora = new Locadora(id, nome, cnpj, cidade, email, ativo);
+                listaLocadoras.add(locadora);
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaLocadoras;
+    }
 }
