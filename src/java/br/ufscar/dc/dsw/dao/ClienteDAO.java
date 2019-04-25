@@ -168,7 +168,6 @@ public class ClienteDAO {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, id_usuario);
             ResultSet resultSet = statement.executeQuery();
-            System.out.println("teste if ");
             if (resultSet.next()) {
                 String sexo = resultSet.getString("sexo");
                 String cpf = resultSet.getString("cpf");
