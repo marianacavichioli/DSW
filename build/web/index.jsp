@@ -53,17 +53,17 @@
         </div>
        
         <div class ='conteudo'>
-        <p> Escolha sua cidade: </p>
+        <p> Escolha sua cidade: <input type="search"> </p>
         
         <h3> Lista de Locadoras <h3>
-        <table style="width:70%">            
-            <tr>
+         <table style="width:80%">                       
+            <tr>                
                 <th>Nome</th>                
                 <th>CNPJ</th>                
                 <th>Telefone</th>                
                 <th>Cidade</th>
-                <th>E-mail</th>   
-            </tr>
+                <th>E-mail</th>
+            </tr>            
             <c:forEach var="locadora" items="${listaLocadoras}">                
                 <tr>                    
                     <td><c:out value="${locadora.id}" /></td>                    
@@ -78,8 +78,8 @@
                             Remoção
                         </a></td>                
                 </tr>            
-            </c:forEach> 
-        </table>
+            </c:forEach>        
+        </table>    
         </div>
 </body>
 </html>

@@ -35,10 +35,11 @@
        <div class ='botoes'>
             <ul>
                 <li><a href="../index.jsp" class="button"> Pagina Inicial</a></li>
-                <li><a href="locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>
+                <li><a href="../locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>
+                <li><a href="../locadora_crud/lista" class="button">Lista de Locadoras</a></li>
                 <li><a href="" class="button">Cadastrar Cliente</a></li>
-                <li><a href="cliente_crud/lista" class="button">Lista de Clientes</a></li>
-                <li><a href="logout" class="button">Logout</a></li>
+                <li><a href="lista" class="button">Lista de Clientes</a></li>
+                <li><a href="../logout" class="button">Logout</a></li>
             </ul>
         </div>
     
