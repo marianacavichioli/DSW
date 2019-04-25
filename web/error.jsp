@@ -5,18 +5,35 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@ page isErrorPage = "true" %>
 <!DOCTYPE html>
 <html>
+    
+    <style>
+        <%@include file="estilo.css"%>
+    </style>
+    
+    
    <head>
-      <title>Show Error Page</title>
+      <fmt:bundle basename="i18n.sistema">
+      <title><fmt:message key="pagina_erro"/></title>
+      </fmt:bundle>
    </head>
    
    <body>
-      <h1>Opps...</h1>
-      <p>Sorry, an error occurred.</p>
-      <p>Here is the exception stack trace: <%=response.getStatus() %></p>
-      
+      <fmt:bundle basename="i18n.sistema">
+      <center>
+          <div class="erro">
+              
+            <h1>Ops!</h1>
+            <p><fmt:message key="erro1"/></p>
+            <p><fmt:message key="erro2"/> <%=response.getStatus() %>. </p>
+            <p><fmt:message key="erro3"/></p>
+            
+          </div>
+      </center>
+      </fmt:bundle>
    </body>
 </html>

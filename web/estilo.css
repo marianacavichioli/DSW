@@ -98,3 +98,14 @@ dropdown:hover .dropdown-content {
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+
+.erro {
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-top: 200px;
+    background-color: #2a2b2d;
+    font-size: 18px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white;
+}
