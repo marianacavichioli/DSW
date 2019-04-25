@@ -35,8 +35,6 @@ public class ClienteDAO {
         PapelDAO papelDAO = new PapelDAO();
         papelDAO.insert(papel);
 
-        System.out.println("papel cliente");
-
         String sql = "INSERT INTO Cliente (id, nome, cpf, telefone, data_nascimento, sexo) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
@@ -158,15 +156,12 @@ public class ClienteDAO {
         return cliente;
     }
 
-    public String getCPF(String email) {
+    public String getCPF(int id_usuario, String email) {
         Cliente cliente = null;
-        //String cpf = null;
                 
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        int id_usuario = usuarioDAO.getID(email);
-        
-        System.out.println("teste id " + id_usuario);
-        
+//        UsuarioDAO usuarioDAO = new UsuarioDAO();
+//        int id_usuario = usuarioDAO.getID(email);
+                
         String sql = "SELECT * FROM Cliente c, Usuario u WHERE c.id = ? and c.id = u.id";
         try {
             Connection conn = this.getConnection();

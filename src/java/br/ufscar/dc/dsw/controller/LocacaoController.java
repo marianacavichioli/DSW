@@ -8,6 +8,7 @@ package br.ufscar.dc.dsw.controller;
 import br.ufscar.dc.dsw.model.Cliente;
 import br.ufscar.dc.dsw.dao.ClienteDAO;
 import br.ufscar.dc.dsw.dao.LocacaoDAO;
+import br.ufscar.dc.dsw.dao.LocadoraDAO;
 import br.ufscar.dc.dsw.dao.UsuarioDAO;
 import br.ufscar.dc.dsw.model.Locacao;
 import java.io.IOException;
@@ -73,12 +74,24 @@ public class LocacaoController extends HttpServlet {
     }
 
     private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        String email = request.getUserPrincipal().getName();
         ClienteDAO clienteDAO = new ClienteDAO();
-        String cpf_cliente = clienteDAO.getCPF(email);
+        LocadoraDAO locadoraDAO = new LocadoraDAO();
+        List<Locacao> listaLocacoes = null;
+
+        String email = request.getUserPrincipal().getName();
         
-        List<Locacao> listaLocacoes = daoLocacao.getAll(cpf_cliente);
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        int id_usuario = usuarioDAO.getID(email);
+        System.out.println(id_usuario);
+        
+        if(clienteDAO.get(id_usuario) != null){
+            String cpf_cliente = clienteDAO.getCPF(id_usuario, email);
+            listaLocacoes = daoLocacao.getAll(cpf_cliente, "cliente");
+        }else if(locadoraDAO.get(id_usuario) != null){
+            String cnpj_locadora = locadoraDAO.getCNPJ(id_usuario, email);
+            listaLocacoes = daoLocacao.getAll(cnpj_locadora, "locadora");
+        }
+        
         request.setAttribute("listaLocacoes", listaLocacoes);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/locacao/lista.jsp");
         dispatcher.forward(request, response);
@@ -103,8 +116,12 @@ public class LocacaoController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         
         String email = request.getParameter("email");
+        
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        int id_usuario = usuarioDAO.getID(email);
+        
         ClienteDAO clienteDAO = new ClienteDAO();
-        String cpf_cliente = clienteDAO.getCPF(email);
+        String cpf_cliente = clienteDAO.getCPF(id_usuario, email);
         
         String cnpj_locadora = request.getParameter("cnpj_locadora");
         String dia = request.getParameter("dia");
