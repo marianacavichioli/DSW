@@ -62,6 +62,9 @@
                 <c:if test="${locacao != null}">                        
                     <input type="hidden" name="id" value="<c:out value='${locacao.id}'/>" />                    
                 </c:if>
+                    
+                <input type="hidden" name="email" value="<c:out value='<%=request.getUserPrincipal().getName().toString()%>'/>" />                   
+                
                 <tr>                        
                     <th>CNPJ Locadora: </th>                        
                     <td>                            

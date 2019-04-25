@@ -79,7 +79,7 @@
                 <tr>                        
                     <th>Telefone: </th>                        
                     <td>                            
-                        <input type="text" name="telefone" maxlength="14" OnKeyPress="formatar('##-#####-####', this)"                                   
+                        <input type="text" name="telefone" maxlength="13" OnKeyPress="formatar('##-#####-####', this)"                                   
                                value="<c:out value='${cliente.telefone}'/>"/>                        
                     </td>                    
                 </tr>                    

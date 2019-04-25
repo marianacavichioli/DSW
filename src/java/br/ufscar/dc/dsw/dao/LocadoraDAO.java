@@ -152,4 +152,32 @@ public class LocadoraDAO {
         }
         return locadora;
     }
+    
+    public String getCNPJ(int id_usuario, String email) {
+        Locadora locadora = null;
+                
+        String sql = "SELECT * FROM Locadora c, Usuario u WHERE c.id = ? and c.id = u.id";
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, id_usuario);
+            ResultSet resultSet = statement.executeQuery();
+            System.out.println("teste if ");
+            if (resultSet.next()) {
+                String cnpj = resultSet.getString("cnpj");
+                String cidade = resultSet.getString("cidade");
+                String senha = resultSet.getString("senha");
+                String nome = resultSet.getString("nome");
+                int ativo = resultSet.getInt("ativo");
+                
+                locadora = new Locadora(id_usuario, nome, cnpj, cidade, senha, email, ativo);
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return locadora.getCnpj();
+    }
 }

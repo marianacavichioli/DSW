@@ -147,9 +147,7 @@ public class UsuarioDAO {
     
     public int getID(String email) {
         Usuario usuario = null;
-        
-        System.out.println("teste usuariodao " + email);
-        
+                
         String sql = "SELECT * FROM Usuario WHERE email = ?";
         try {
             Connection conn = this.getConnection();
