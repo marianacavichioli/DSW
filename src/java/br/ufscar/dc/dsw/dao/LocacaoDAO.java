@@ -2,6 +2,7 @@ package br.ufscar.dc.dsw.dao;
 
 import br.ufscar.dc.dsw.model.Cliente;
 import br.ufscar.dc.dsw.model.Locacao;
+import br.ufscar.dc.dsw.model.Usuario;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -139,5 +140,33 @@ public class LocacaoDAO {
         }
         
         return locacao;
+    }
+    
+    public List<Locacao> getAllLocacoes() {
+        List<Locacao> listaLocacoes = new ArrayList<>();
+        String sql = "SELECT * FROM Locacao";
+       
+        try {
+            Connection conn = this.getConnection();
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String cpf_cliente = resultSet.getString("cpf_cliente");
+                String cnpj_locadora = resultSet.getString("cnpj_locadora");
+                String dia = resultSet.getString("dia");
+                String hora = resultSet.getString("hora");
+                
+                Locacao locacao = new Locacao(id, cpf_cliente, cnpj_locadora, dia, hora);
+                listaLocacoes.add(locacao);
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        
+        return listaLocacoes;
     }
 }

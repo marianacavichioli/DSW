@@ -16,7 +16,7 @@
           if (texto.substring(0,1) != saida){
                     documento.value += texto.substring(0,1);
           }
-          
+                    
           onlynumber();
 
         }
