@@ -34,9 +34,7 @@ public class LocadoraDAO {
         
         PapelDAO papelDAO = new PapelDAO();
         papelDAO.insert(papel);
-        
-        System.out.println("papel locadora");
-        
+               
         String sql = "INSERT INTO Locadora (id, nome, cnpj, cidade) VALUES (?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
@@ -162,7 +160,6 @@ public class LocadoraDAO {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, id_usuario);
             ResultSet resultSet = statement.executeQuery();
-            System.out.println("teste if ");
             if (resultSet.next()) {
                 String cnpj = resultSet.getString("cnpj");
                 String cidade = resultSet.getString("cidade");

@@ -176,9 +176,6 @@ public class ClienteDAO {
                 String senha = resultSet.getString("senha");
                 String nome = resultSet.getString("nome");
                 int ativo = resultSet.getInt("ativo");
-                
-                System.out.println("teste id " + cpf);
-
                 cliente = new Cliente(id_usuario, nome, cpf, telefone, data_nascimento, sexo, senha, email, ativo);
             }
             resultSet.close();

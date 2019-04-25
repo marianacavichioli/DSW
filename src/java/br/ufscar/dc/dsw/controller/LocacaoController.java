@@ -83,7 +83,6 @@ public class LocacaoController extends HttpServlet {
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         int id_usuario = usuarioDAO.getID(email);
-        System.out.println(id_usuario);
 
         if (clienteDAO.get(id_usuario) != null) {
             String cpf_cliente = clienteDAO.getCPF(id_usuario, email);
@@ -113,8 +112,6 @@ public class LocacaoController extends HttpServlet {
 
     private void insere(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ParseException {
-
-        System.out.println("ENTREI INSERT");
         
         request.setCharacterEncoding("UTF-8");
 
