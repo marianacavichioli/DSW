@@ -21,7 +21,7 @@ table, th, td {
   color: white;
 }
 
-.button {
+.button, .dropbtn {
   background-color: #424141;
   border: none;
   color: white;
@@ -34,7 +34,7 @@ table, th, td {
   transition-duration: 0.4s;
 }
 
-.button:hover {
+.button:hover, .dropdown-content a:hover {
   background-color: white;
   color: #424141;
 }
@@ -60,7 +60,7 @@ table, th, td {
     border-bottom: 1px solid black;
 }
 
-.botoes li a:link, #navigation li a:visited {
+.botoes li a:link, #navigation li a:visited, .dropdown-content a {
     margin-top: 15px;
     display: block;
     padding: 5px 5px 5px 0.5em;
@@ -77,48 +77,24 @@ table, th, td {
   height: 500px; 
 }
 
-.dropbtn {
-    display: inline-block;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-    background-color: #424141;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;  
-}
-
 .dropdown {
   position: relative;
-}
-
-.dropdown-content {
-    display: none; 
-    position: absolute;
-    background-color: #424141;
-    z-index: 1;
-}
-
-.dropdown-content a {
-    margin-top: 15px;
-    padding: 5px 5px 5px 0.5em;
-    border-left: 12px solid black;
-    border-right: 1px solid black;
-    text-decoration: none;
-}
-
-.dropdown-content a:hover { 
-    background-color: white;
-    color: #424141;
-}
-
-.dropdown:hover .dropdown-content {
   display: inline-block;
 }
 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+dropdown:hover .dropdown-content {
+  display: block;
+}
+
 .dropdown:hover .dropbtn {
-   background-color: white;
-    color: #424141;
+  background-color: #3e8e41;
 }

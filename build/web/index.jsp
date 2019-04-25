@@ -41,7 +41,6 @@
                 </sec:authorize>
                                   
                 <sec:authorize access="hasRole('ADMIN')">
-                    
                     <li><a href="locadora_crud/cadastro" class="button">Cadastrar Locadora</a></li>
                     <li><a href="locadora_crud/lista" class="button">Lista de Locadoras</a></li>
                     <li><a href="cliente_crud/cadastro" class="button">Cadastrar Cliente</a></li>
@@ -50,13 +49,14 @@
 
             <li><a href="logout" class="button">Logout</a></li>
 
-
-        </ul>
-    </div>
-
-    <div class='conteudo'>  
-        <table style="width:80%">            
-            <caption><h2>Lista de Locadoras</h2></caption>            
+            </ul>
+        </div>
+       
+        <div class ='conteudo'>
+        <p> Escolha sua cidade: <input type="search"> </p>
+        
+        <h3> Lista de Locadoras <h3>
+         <table style="width:80%">                       
             <tr>                
                 <th>Nome</th>                
                 <th>CNPJ</th>                
