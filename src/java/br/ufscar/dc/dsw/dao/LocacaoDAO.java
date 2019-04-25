@@ -46,14 +46,16 @@ public class LocacaoDAO {
         }
     }
 
-    public List<Locacao> getAll() {
-                
+    public List<Locacao> getAll(String cpf) {
+        System.out.println(cpf);
+        
         List<Locacao> listaLocacoes = new ArrayList<>();
-        String sql = "SELECT * FROM Locacao";
+        String sql = "SELECT * FROM Locacao l WHERE l.cpf_cliente = ?";
         try {
             Connection conn = this.getConnection();
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, cpf);
+            ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String cpf_cliente = resultSet.getString("cpf_cliente");
@@ -70,6 +72,8 @@ public class LocacaoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        
+        System.out.println(listaLocacoes);
         return listaLocacoes;
     }
 

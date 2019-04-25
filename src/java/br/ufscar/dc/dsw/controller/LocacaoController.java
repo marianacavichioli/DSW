@@ -73,7 +73,12 @@ public class LocacaoController extends HttpServlet {
     }
 
     private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Locacao> listaLocacoes = daoLocacao.getAll();
+        
+        String email = request.getUserPrincipal().getName();
+        ClienteDAO clienteDAO = new ClienteDAO();
+        String cpf_cliente = clienteDAO.getCPF(email);
+        
+        List<Locacao> listaLocacoes = daoLocacao.getAll(cpf_cliente);
         request.setAttribute("listaLocacoes", listaLocacoes);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/locacao/lista.jsp");
         dispatcher.forward(request, response);
@@ -98,21 +103,12 @@ public class LocacaoController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         
         String email = request.getParameter("email");
-        
-        System.out.println("era pra ter email " + email);
-        
         ClienteDAO clienteDAO = new ClienteDAO();
         String cpf_cliente = clienteDAO.getCPF(email);
         
-        System.out.println("era pra ter cpf" + cpf_cliente);
-        
-        //String cpf_cliente = request.getParameter("cpf_cliente");
         String cnpj_locadora = request.getParameter("cnpj_locadora");
         String dia = request.getParameter("dia");
         String hora = request.getParameter("hora");
-        
-        System.out.println("Hora: ");
-        System.out.println(hora);
         
         Locacao locacao = new Locacao(-1, cpf_cliente, cnpj_locadora, dia, hora);
         daoLocacao.insert(locacao);
