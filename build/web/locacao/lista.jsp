@@ -2,6 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page errorPage = "error.jsp" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
@@ -27,7 +28,10 @@
     <fmt:bundle basename="i18n.sistema">
         <div class ='botoes'>
             <ul>
-                <li><a href="cadastro" class="button"><fmt:message key="cadastro_locacao"/></a></li>
+                <sec:authorize access="hasRole('CLIENTE')">
+                    <li><a href="cadastro" class="button"><fmt:message key="cadastro_locacao"/></a></li>
+                </sec:authorize>
+                
                 <li><a href="lista" class="button"><fmt:message key="lista_locacao"/></a></li>
                 <li><a href="../logout" class="button">Logout</a></li>
             </ul>

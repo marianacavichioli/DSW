@@ -34,7 +34,7 @@
     <fmt:bundle basename="i18n.sistema">
         <div class ='botoes'>
             <ul>                
-                <sec:authorize access="hasAnyRole('CLIENTE')">
+                <sec:authorize access="hasRole('CLIENTE')">
                     <li><a href="locacao_crud/cadastro" class="button"><fmt:message key="cadastro_locacao"/></a></li>
                 </sec:authorize>
                     
@@ -98,23 +98,6 @@
             </tr>  
             </tr>
             <%}%>
-
-
-<!--            <c:forEach var="locadora" items="<% listaLocadoras = locadoraDAO.getAll();%>">    
-<tr>                    
-<td><c:out value="${locadora.id}" /></td>                    
-<td><c:out value="${locadora.nome}" /></td>                    
-<td><c:out value="${locadora.cnpj}" /></td>                    
-<td><c:out value="${locadora.cidade}" /></td>
-<td><c:out value="${locadora.email}" /></td>
-<td><a href="edicao?id=<c:out value='${locadora.id}' />">Edição</a>                        
-&nbsp;&nbsp;&nbsp;&nbsp;                        
-<a href="remocao?id=<c:out value='${locadora.id}' />
-"onclick="return confirm('Tem certeza de que deseja excluir este item?');">
-Remoção
-</a></td>                
-</tr>            
-</c:forEach>        -->
         </table>    
     </div>
 </fmt:bundle>
