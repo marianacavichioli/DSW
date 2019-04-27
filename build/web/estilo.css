@@ -14,7 +14,7 @@ table, th, td {
 }
 
 .header {
-  background-color: #666;
+  background-color: #2a2b2d;
   padding: 30px;
   text-align: center;
   font-size: 18px;
@@ -22,7 +22,7 @@ table, th, td {
 }
 
 .button, .dropbtn {
-  background-color: #424141;
+  background-color: #2a2b2d;
   border: none;
   color: white;
   padding: 15px 32px;
